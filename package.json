@@ -23,6 +23,7 @@
     "@types/jest": "^24.0.24",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^5.0.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
@@ -36,12 +37,14 @@
     "rollup-plugin-typescript2": "^0.25.3",
     "standard": "^14.3.1",
     "standard-prettier": "^1.0.1",
+    "styled-components": "^5.1.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
   },
   "peerDependencies": {
     "react": "^16",
-    "react-dom": "^16"
+    "react-dom": "^16",
+    "styled-components": "^5.1.0"
   },
   "jest": {
     "preset": "ts-jest",
