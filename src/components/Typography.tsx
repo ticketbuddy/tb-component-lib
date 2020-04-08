@@ -1,24 +1,15 @@
-import * as React from 'react'
-import styled, {css} from "styled-components"
+import styled from "styled-components"
 
-interface PProps {
+interface ParagraphProps {
   readonly muted?: boolean;
   readonly sm?: boolean;
 }
 
-export const P: React.FunctionComponent<PProps> = styled.p`
+export const P = styled.p<ParagraphProps>`
   margin: 0;
   font-size: 1.0625rem;
   font-weight: 400;
   line-height: 1.6;
-  ${(props: PProps) =>
-    props.sm &&
-    css`
-      font-size: 0.8rem;
-    `}
-  ${(props: PProps) =>
-    props.muted &&
-    css`
-      opacity: 0.6;
-    `}
+  ${(props) => props.sm && "font-size: 0.8rem;"}
+  ${(props) => props.muted && "opacity: 0.6;"}
 `;
