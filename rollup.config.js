@@ -27,12 +27,22 @@ export default {
     typescript({
       rollupCommonJSResolveHack: true,
       exclude: [
-        '**/__tests__/**'
+        '**/__tests__/**',
+        '**/*.stories.tsx'
       ],
       clean: true
     }),
     commonjs({
-      include: ['node_modules/**']
+      include: ['node_modules/**'],
+      namedExports: {
+        'node_modules/react/react.js': [
+          'Children',
+          'Component',
+          'PropTypes',
+          'createElement'
+        ],
+        'node_modules/react-dom/index.js': ['render']
+      }
     })
   ]
 }
