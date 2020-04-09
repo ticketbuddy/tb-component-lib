@@ -20,5 +20,8 @@ declare module 'styled-components' {
     errorColor: string
 
     fontColor: string
+
+    headingFontFamily: string
+    textFontFamily: string
   }
 }

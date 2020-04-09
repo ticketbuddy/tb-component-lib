@@ -19,6 +19,9 @@ const lightTheme: DefaultTheme = {
   errorColor: "#B00020",
 
   fontColor: "#000000",
+
+  headingFontFamily: "Quicksand, sans-serif",
+  textFontFamily: "Quicksand, sans-serif"
 };
 
 export { lightTheme }
