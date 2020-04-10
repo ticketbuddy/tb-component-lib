@@ -1,11 +1,15 @@
 import * as React from "react"
-import {H1, Input, Button, GridContainer, GridItem, P} from "../";
+import {Error, H1, Input, Button, GridContainer, GridItem} from "../";
 import { useForm } from 'react-hook-form'
 
 export type OnIncorrectCredentials = () => void;
+export type SignInFormValues = {
+  email: string;
+  password: string;
+}
 
 interface SignInFormProps {
-  onSubmit: (values: any, onIncorrectCredentials: OnIncorrectCredentials) => void
+  onSubmit: (values: SignInFormValues, onIncorrectCredentials: OnIncorrectCredentials) => void
 }
 
 export const SignInForm = (props: SignInFormProps) => {
@@ -15,7 +19,7 @@ export const SignInForm = (props: SignInFormProps) => {
     setError("credentials", "apiError")
   }
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: SignInFormValues) => {
     props.onSubmit(values, onIncorrectCredentials)
   }
 
@@ -26,15 +30,15 @@ export const SignInForm = (props: SignInFormProps) => {
           <GridContainer gap={1}>
             <GridItem xs="5/8">
               <H1>Sign In</H1>
-              {errors.credentials && <P>Invalid credentials, please try again.</P>}
+              {errors.credentials && <Error>Invalid credentials, please try again.</Error>}
             </GridItem>
             <GridItem xs="5/8">
               <Input error={!!errors.email} type="email" placeholder="Email" name="email" ref={register({ required: true })} />
-              {errors.email && <P>Email is required</P>}
+              {errors.email && <Error>Email is required</Error>}
             </GridItem>
             <GridItem xs="5/8">
               <Input error={!!errors.password} type="password" placeholder="Password" name="password" ref={register({ required: true })} />
-              {errors.password && <P>Password is required</P>}
+              {errors.password && <Error>Password is required</Error>}
             </GridItem>
             <GridItem xs="5/8" horizontalAlign="center">
               <Button>Sign In</Button>

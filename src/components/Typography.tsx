@@ -5,6 +5,12 @@ interface ParagraphProps {
   readonly sm?: boolean;
 }
 
+export const Error = styled.span`
+  color: ${(props) => props.theme.errorColor};
+  font-family: ${props => props.theme.textFontFamily};
+  font-size: 0.8rem;
+`;
+
 export const P = styled.p<ParagraphProps>`
   margin: 0;
   font-size: 1.0625rem;
