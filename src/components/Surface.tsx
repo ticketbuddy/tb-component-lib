@@ -9,6 +9,6 @@ interface SurfaceProps {
 export const Surface = styled.div<SurfaceProps>`
   ${props => props.shadow && `box-shadow: 0 0 ${props.shadow}px rgba(0, 0, 0, 0.1);`}
   background: ${props => props.theme.surfaceColor};
-  padding: ${props => props.padding}rem;
-  margin: ${props => props.spacing}rem;
+  padding: ${props => props.padding || 0}rem;
+  margin: ${props => props.spacing || 0}rem;
 `;

@@ -14,5 +14,9 @@ export const surface = () => (
     <Surface shadow={10} spacing={1} padding={1.5}>
       Surface content
     </Surface>
+
+    <Surface>
+      Surface content, no spacing or padding
+    </Surface>
   </ThemeProvider>
 );

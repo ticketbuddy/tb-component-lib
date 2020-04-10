@@ -1,2 +1,2 @@
 export * from './components/Typography'
-export * from './components/VerticalAlign'
+export * from './components/Grid'
