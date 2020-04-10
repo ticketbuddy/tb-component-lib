@@ -42,3 +42,6 @@ export const GridItem = styled.div<GridItemProps>`
     grid-column: ${props => props.lg || props.md || props.sm || props.xs};
   }
 `;
+
+// Grid help:
+// https://youtu.be/jV8B24rSN5o
