@@ -9,7 +9,7 @@
     "build": "rollup -c",
     "lint": "standard",
     "format": "prettier-standard --format",
-    "test": "jest --coverage",
+    "test": "jest",
     "storybook": "start-storybook"
   },
   "keywords": [],
@@ -18,8 +18,9 @@
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@storybook/react": "^5.2.8",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.2",
+    "@testing-library/user-event": "^10.0.1",
     "@types/jest": "^24.0.24",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
@@ -27,6 +28,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "prettier-standard": "^16.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -48,7 +50,7 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "jsdom",
+    "testEnvironment": "jest-environment-jsdom-sixteen",
     "testPathIgnorePatterns": [
       "build/"
     ]
