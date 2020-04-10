@@ -1,10 +1,10 @@
 import * as React from "react"
 import styled from "styled-components";
-import {P, H3, Surface, Button} from "../";
+import {P, H4, Surface, Button} from "../";
+import {GridContainer, GridItem} from "../"
 
 const Warning = styled.div`
-  background: #fff;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
   ${(props) => `border-bottom: 5px solid ${props.theme.primaryColorDark};`};
 `;
 
@@ -24,19 +24,25 @@ export const LegalNotice = (props: LegalNoticeProps) => {
     {(isFirstAccept || newerVersionExists) && (
         <Warning data-test-id="legal-notice">
           <Surface>
-          {isFirstAccept && (
-            <>
-              <H3>Cookie notice</H3>
-              <P>By using ticketbuddy.co.uk, you consent to our cookie and terms and conditions policy.</P>
-            </>
-          )}
-          {!isFirstAccept && newerVersionExists && (
-            <>
-              <H3>Updated terms and conditions</H3>
-              <P>Please review our latest terms and conditions and cookie policy.</P>
-            </>
-          )}
-            <Button data-test-id="accept-legal-btn" sm success onClick={() => props.onAccept()}>I agree</Button>
+          <GridContainer gap={5}>
+            <GridItem xs="3/7">
+            {isFirstAccept && (
+              <>
+                <H4>Cookie notice</H4>
+                <P sm>By using ticketbuddy.co.uk, you consent to our cookie and terms and conditions policy.</P>
+              </>
+            )}
+            {!isFirstAccept && newerVersionExists && (
+              <>
+                <H4>Updated terms and conditions</H4>
+                <P sm>Please review our latest terms and conditions and cookie policy.</P>
+              </>
+            )}
+            </GridItem>
+            <GridItem xs="7/10" horizontalAlign="right" vertialAlign="center">
+              <Button data-test-id="accept-legal-btn" sm  onClick={() => props.onAccept()}>I agree</Button>
+            </GridItem>
+            </GridContainer>
           </Surface>
         </Warning>
     )}
