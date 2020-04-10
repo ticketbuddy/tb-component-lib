@@ -34,3 +34,44 @@ export const verticalAlign = () => (
     <GridItem vertialAlign="end" xs="1/12" sm="5/12" md="5/12" lg="5/12" style={{background: "tomato"}}>end</GridItem>
   </GridContainer>
 );
+
+export const horizontalAlignStart = () => (
+  <GridContainer height={200}>
+    <GridItem xs="1/span 6" style={{background: "tomato"}}></GridItem>
+    <GridItem xs="7/11" style={{background: "green"}}></GridItem>
+    <GridItem horizontalAlign="start" xs="11/span 12" style={{background: "tomato"}}>start</GridItem>
+  </GridContainer>
+);
+
+export const horizontalAlignCenter = () => (
+  <GridContainer height={200}>
+    <GridItem xs="1/span 6" style={{background: "tomato"}}></GridItem>
+    <GridItem xs="7/11" style={{background: "green"}}></GridItem>
+    <GridItem horizontalAlign="center" xs="11/span 12" style={{background: "tomato"}}>center</GridItem>
+  </GridContainer>
+);
+
+export const horizontalAlignEnd = () => (
+  <GridContainer height={200}>
+    <GridItem xs="1/span 6" style={{background: "tomato"}}></GridItem>
+    <GridItem xs="7/11" style={{background: "green"}}></GridItem>
+    <GridItem horizontalAlign="end" xs="11/span 12" style={{background: "tomato"}}>end</GridItem>
+  </GridContainer>
+);
+
+export const gridGap = () => (
+  <GridContainer gap={1}>
+    <GridItem xs="1/1"  style={{background: "tomato"}}>c</GridItem>
+    <GridItem xs="2/2" style={{background: "green"}}>c</GridItem>
+    <GridItem xs="3/3" style={{background: "tomato"}}>c</GridItem>
+    <GridItem xs="4/4"  style={{background: "green"}}>c</GridItem>
+    <GridItem xs="5/5" style={{background: "tomato"}}>c</GridItem>
+    <GridItem xs="6/6" style={{background: "green"}}>c</GridItem>
+    <GridItem xs="7/7"  style={{background: "tomato"}}>c</GridItem>
+    <GridItem xs="8/8" style={{background: "green"}}>c</GridItem>
+    <GridItem xs="9/9" style={{background: "tomato"}}>c</GridItem>
+    <GridItem xs="10/10"  style={{background: "green"}}>c</GridItem>
+    <GridItem xs="11/11" style={{background: "tomato"}}>c</GridItem>
+    <GridItem xs="12/12" style={{background: "green"}}>c</GridItem>
+  </GridContainer>
+);
