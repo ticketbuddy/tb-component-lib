@@ -18,6 +18,9 @@ const lightTheme: DefaultTheme = {
   // Error color indicates errors in components, such as invalid text in a text field.
   errorColor: "#B00020",
 
+  // Success color indicates successful requests in components, such button backgrounds.
+  successColor: "#33cc5e",
+
   fontColor: "#000000",
 
   headingFontFamily: "Quicksand, sans-serif",

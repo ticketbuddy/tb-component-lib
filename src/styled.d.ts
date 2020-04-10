@@ -19,6 +19,9 @@ declare module 'styled-components' {
     // Error color indicates errors in components, such as invalid text in a text field.
     errorColor: string
 
+    // Success color indicates successful requests in components, such button backgrounds.
+    successColor: string
+
     fontColor: string
 
     headingFontFamily: string
