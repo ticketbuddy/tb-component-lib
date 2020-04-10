@@ -66,5 +66,8 @@
       "afterAll",
       "jest"
     ]
+  },
+  "dependencies": {
+    "react-hook-form": "^5.3.1"
   }
 }
