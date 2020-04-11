@@ -5,10 +5,9 @@ import { lightTheme } from "../theme"
 
 export default { title: 'Sign in form' }
 
-export const isNewerTerms = () => (
+export const incorrectCredentials = () => (
   <ThemeProvider theme={lightTheme}>
-    <SignInForm onSubmit={(values: any, onIncorrectCredentials: OnIncorrectCredentials) => {
-      console.log(onIncorrectCredentials)
+    <SignInForm submitSignIn={(values: any, onIncorrectCredentials: OnIncorrectCredentials) => {
       console.log(values)
       onIncorrectCredentials();
     } }/>
