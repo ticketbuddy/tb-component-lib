@@ -35,10 +35,10 @@ export const GridItem = styled.div<GridItemProps>`
   @media only screen and (min-width: 500px) {
     grid-column: ${props => props.sm || props.xs};
   }
-  @media only screen and (min-width: 750px) {
+  @media only screen and (min-width: 720px) {
     grid-column: ${props => props.md || props.sm || props.xs};
   }
-  @media only screen and (min-width: 950px) {
+  @media only screen and (min-width: 1280px) {
     grid-column: ${props => props.lg || props.md || props.sm || props.xs};
   }
 `;
