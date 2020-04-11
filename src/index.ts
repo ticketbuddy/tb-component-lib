@@ -1,3 +1,4 @@
+// components
 export * from './components/Typography'
 export * from './components/Grid'
 export * from "./components/Surface"
@@ -8,3 +9,6 @@ export * from "./components/SignInForm"
 export * from "./components/Image"
 export * from "./components/PromoterCard"
 export * from "./components/EnumState"
+
+// types
+export * from "./components/promoter"

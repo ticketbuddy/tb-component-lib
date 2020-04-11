@@ -1,11 +1,5 @@
 import * as React from "react"
-import {Image, H2, Surface} from "../";
-
-type Promoter = {
-  id: string;
-  title: string;
-  logo?: string;
-}
+import {Promoter, Image, H2, Surface} from "../";
 
 interface PromoterCardProps {
   promoter: Promoter
