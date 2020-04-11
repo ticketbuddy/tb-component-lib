@@ -3,7 +3,7 @@ import { PromoterDescriptionForm } from './PromoterDescriptionForm'
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from "../theme"
 
-export default { title: 'Promoter Description' }
+export default { title: 'Promoter Description Form' }
 
 const promoter = {
   id: "promoter-abc",
