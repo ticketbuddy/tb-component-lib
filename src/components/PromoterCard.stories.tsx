@@ -6,7 +6,7 @@ import { lightTheme } from "../theme"
 export default { title: 'Promoter Card' }
 
 const promoter = {
-  id: "promoter-abc",
+  promoter_id: "promoter-abc",
   title: "My magnificent promoter"
 }
 

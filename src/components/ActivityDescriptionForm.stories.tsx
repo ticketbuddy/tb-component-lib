@@ -6,7 +6,8 @@ import { lightTheme } from "../theme"
 export default { title: 'Activity Description Form' }
 
 const activity = {
-  id: "activity-abc",
+  activity_id: "activity-abc",
+  promoter_id: "promoter-abc",
   title: "My magnificent activity",
   description: "This is my\n\n\ndescription."
 }

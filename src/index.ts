@@ -13,3 +13,4 @@ export * from "./components/EnumState"
 // types
 export * from "./components/promoter"
 export * from "./components/activity"
+export * from "./components/activityDate"
