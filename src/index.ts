@@ -15,3 +15,6 @@ export * from "./components/promoter"
 export * from "./components/activity"
 export * from "./components/activityDate"
 export * from "./components/ticket"
+
+// data
+export * from "./data/useCreditor"
