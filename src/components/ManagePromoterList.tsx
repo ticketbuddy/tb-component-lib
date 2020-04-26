@@ -1,5 +1,6 @@
 import * as React from "react"
 import {EnumState, PromoterCard, Button, Surface, GridContainer, GridItem, Promoter} from "../";
+import { Link } from "react-router-dom";
 
 type PromotersList = {
   [promoterId: string]: Promoter
@@ -20,9 +21,11 @@ const WhenPromotersExist = (props: ManagePromoterListProps) => {
       </GridItem>
       {promoters.map((promoter: Promoter) => (
         <GridItem xs="1/13">
-          <Surface>
-            <PromoterCard promoter={promoter} />
-          </Surface>
+          <Link to={`/dashboard/promoter/${promoter.promoter_id}`}>
+            <Surface>
+              <PromoterCard promoter={promoter} />
+            </Surface>
+          </Link>
         </GridItem>
       ))}
     </GridContainer>

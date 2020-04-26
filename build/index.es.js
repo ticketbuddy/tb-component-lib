@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { createElement, Fragment, createContext, useCallback, useRef, useState, useEffect, isValidElement } from 'react';
+import { Link } from 'react-router-dom';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1529,8 +1530,9 @@ var WhenPromotersExist = function (props) {
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
             createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (createElement(GridItem, { xs: "1/13" },
-            createElement(Surface, null,
-                createElement(PromoterCard, { promoter: promoter })))); })));
+            createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
+                createElement(Surface, null,
+                    createElement(PromoterCard, { promoter: promoter }))))); })));
 };
 var WhenNoPromoters = function (props) { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },

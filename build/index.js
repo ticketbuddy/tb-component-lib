@@ -7,6 +7,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 var React = require('react');
+var reactRouterDom = require('react-router-dom');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1536,8 +1537,9 @@ var WhenPromotersExist = function (props) {
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
             React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (React.createElement(GridItem, { xs: "1/13" },
-            React.createElement(Surface, null,
-                React.createElement(PromoterCard, { promoter: promoter })))); })));
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
+                React.createElement(Surface, null,
+                    React.createElement(PromoterCard, { promoter: promoter }))))); })));
 };
 var WhenNoPromoters = function (props) { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
