@@ -12,6 +12,9 @@ export * from "./components/EnumState"
 export * from "./components/Header"
 export * from "./components/ManagePromoterList"
 export * from "./components/PersonState"
+export * from "./components/PromoterDescriptionForm"
+export * from "./components/ActivityDescriptionForm"
+export * from "./components/ActivityDateForm"
 
 // types
 export * from "./components/promoter"

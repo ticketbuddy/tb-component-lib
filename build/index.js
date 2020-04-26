@@ -1555,6 +1555,80 @@ var PersonState = function (_a) {
     return onVerified();
 };
 
+var PromoterDescriptionForm = function (props) {
+    var promoter = props.promoter;
+    var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitPromoterDescription(values);
+    };
+    return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        React.createElement(GridContainer, { gap: 1 },
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(H2, { "data-testid": "promoter-description-title" },
+                    "Edit ",
+                    promoter.title)),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: promoter.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
+                errors.title && React.createElement(Error, null, "A promoter must have a title")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(TextArea, { defaultValue: promoter.description, "data-testid": "description-input", placeholder: "Description", name: "description", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Button, { "data-testid": "submit-promoter-description" }, "Save")))));
+};
+
+var ActivityDescriptionForm = function (props) {
+    var activity = props.activity;
+    var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitActivityDescription(values);
+    };
+    return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        React.createElement(GridContainer, { gap: 1 },
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(H2, { "data-testid": "activity-description-title" },
+                    "Edit ",
+                    activity.title)),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activity.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
+                errors.title && React.createElement(Error, null, "An event must have a title!")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(TextArea, { defaultValue: activity.description, "data-testid": "description-input", placeholder: "Description", name: "description", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Button, { "data-testid": "submit-activity-description" }, "Save")))));
+};
+
+var ActivityDateForm = function (props) {
+    var activityDate = props.activityDate;
+    var _a = useForm(), register = _a.register, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitActivityDate(values);
+    };
+    return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        React.createElement(GridContainer, { gap: 1 },
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(H3, null, "Location")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.addr_line_1, "data-testid": "addr_line_1-input", placeholder: "Line 1", name: "addr_line_1", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.addr_line_2, "data-testid": "addr_line_2-input", placeholder: "Line 2", name: "addr_line_2", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.postcode, "data-testid": "postcode-input", placeholder: "Postcode", name: "postcode", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.county, "data-testid": "county-input", placeholder: "County", name: "county", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.country, "data-testid": "country-input", placeholder: "Country", name: "country", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(H3, null, "Times")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.goes_live, "data-testid": "goes_live-input", placeholder: "Goes live", name: "goes_live", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.starts, "data-testid": "starts-input", placeholder: "Starts", name: "starts", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: activityDate.ends, "data-testid": "ends-input", placeholder: "Ends", name: "ends", ref: register() })),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Button, { "data-testid": "submit-activity-date" }, "Save")))));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1574,6 +1648,8 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
+exports.ActivityDateForm = ActivityDateForm;
+exports.ActivityDescriptionForm = ActivityDescriptionForm;
 exports.Button = Button;
 exports.EnumState = EnumState;
 exports.Error = Error;
@@ -1593,6 +1669,7 @@ exports.ManagePromoterList = ManagePromoterList;
 exports.P = P;
 exports.PersonState = PersonState;
 exports.PromoterCard = PromoterCard;
+exports.PromoterDescriptionForm = PromoterDescriptionForm;
 exports.SignInForm = SignInForm;
 exports.Surface = Surface;
 exports.TextArea = TextArea;

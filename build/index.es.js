@@ -1548,6 +1548,80 @@ var PersonState = function (_a) {
     return onVerified();
 };
 
+var PromoterDescriptionForm = function (props) {
+    var promoter = props.promoter;
+    var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitPromoterDescription(values);
+    };
+    return (createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        createElement(GridContainer, { gap: 1 },
+            createElement(GridItem, { xs: "1/13" },
+                createElement(H2, { "data-testid": "promoter-description-title" },
+                    "Edit ",
+                    promoter.title)),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: promoter.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
+                errors.title && createElement(Error, null, "A promoter must have a title")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(TextArea, { defaultValue: promoter.description, "data-testid": "description-input", placeholder: "Description", name: "description", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Button, { "data-testid": "submit-promoter-description" }, "Save")))));
+};
+
+var ActivityDescriptionForm = function (props) {
+    var activity = props.activity;
+    var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitActivityDescription(values);
+    };
+    return (createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        createElement(GridContainer, { gap: 1 },
+            createElement(GridItem, { xs: "1/13" },
+                createElement(H2, { "data-testid": "activity-description-title" },
+                    "Edit ",
+                    activity.title)),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activity.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
+                errors.title && createElement(Error, null, "An event must have a title!")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(TextArea, { defaultValue: activity.description, "data-testid": "description-input", placeholder: "Description", name: "description", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Button, { "data-testid": "submit-activity-description" }, "Save")))));
+};
+
+var ActivityDateForm = function (props) {
+    var activityDate = props.activityDate;
+    var _a = useForm(), register = _a.register, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitActivityDate(values);
+    };
+    return (createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        createElement(GridContainer, { gap: 1 },
+            createElement(GridItem, { xs: "1/13" },
+                createElement(H3, null, "Location")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.addr_line_1, "data-testid": "addr_line_1-input", placeholder: "Line 1", name: "addr_line_1", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.addr_line_2, "data-testid": "addr_line_2-input", placeholder: "Line 2", name: "addr_line_2", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.postcode, "data-testid": "postcode-input", placeholder: "Postcode", name: "postcode", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.county, "data-testid": "county-input", placeholder: "County", name: "county", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.country, "data-testid": "country-input", placeholder: "Country", name: "country", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(H3, null, "Times")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.goes_live, "data-testid": "goes_live-input", placeholder: "Goes live", name: "goes_live", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.starts, "data-testid": "starts-input", placeholder: "Starts", name: "starts", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: activityDate.ends, "data-testid": "ends-input", placeholder: "Ends", name: "ends", ref: register() })),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Button, { "data-testid": "submit-activity-date" }, "Save")))));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1567,5 +1641,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManagePromoterList, P, PersonState, PromoterCard, SignInForm, Surface, TextArea, lightTheme };
+export { ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, lightTheme };
 //# sourceMappingURL=index.es.js.map
