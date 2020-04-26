@@ -1539,6 +1539,15 @@ var ManagePromoterList = function (props) {
     return (createElement(EnumState, { e: props.promoters, onEmpty: function () { return createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return createElement(WhenPromotersExist, __assign({}, props)); } }));
 };
 
+var PersonState = function (_a) {
+    var p = _a.p, onAnonymous = _a.onAnonymous, onAnonymousWithSession = _a.onAnonymousWithSession, onVerified = _a.onVerified;
+    if (p.user_status == "anonymous")
+        return onAnonymous();
+    if (p.user_status == "anonymous_with_session")
+        return onAnonymousWithSession();
+    return onVerified();
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1558,5 +1567,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManagePromoterList, P, PromoterCard, SignInForm, Surface, TextArea, lightTheme };
+export { Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManagePromoterList, P, PersonState, PromoterCard, SignInForm, Surface, TextArea, lightTheme };
 //# sourceMappingURL=index.es.js.map
