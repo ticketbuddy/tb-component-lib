@@ -23,6 +23,17 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 function __makeTemplateObject(cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -1519,6 +1530,22 @@ var Header = function (props) { return (React.createElement(HeaderWrapper, null,
         React.createElement(GridItem, { xs: "6/10", horizontalAlign: "end", onClick: function () { return props.openMenu(); } }, "burger menu")))); };
 var templateObject_1$7;
 
+var WhenPromotersExist = function (props) {
+    var promoters = Object.values(props.promoters);
+    return (React.createElement(GridContainer, { gap: 1 },
+        React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
+        promoters.map(function (promoter) { return (React.createElement(GridItem, { xs: "1/13" },
+            React.createElement(Surface, null,
+                React.createElement(PromoterCard, { promoter: promoter })))); })));
+};
+var WhenNoPromoters = function (props) { return (React.createElement(GridContainer, { gap: 1 },
+    React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
+var ManagePromoterList = function (props) {
+    return (React.createElement(EnumState, { e: props.promoters, onEmpty: function () { return React.createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenPromotersExist, __assign({}, props)); } }));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1553,6 +1580,7 @@ exports.Image = Image;
 exports.ImageContainer = ImageContainer;
 exports.Input = Input;
 exports.LegalNotice = LegalNotice;
+exports.ManagePromoterList = ManagePromoterList;
 exports.P = P;
 exports.PromoterCard = PromoterCard;
 exports.SignInForm = SignInForm;

@@ -9,6 +9,7 @@ export * from "./components/Image";
 export * from "./components/PromoterCard";
 export * from "./components/EnumState";
 export * from "./components/Header";
+export * from "./components/ManagePromoterList";
 export * from "./components/promoter";
 export * from "./components/activity";
 export * from "./components/activityDate";

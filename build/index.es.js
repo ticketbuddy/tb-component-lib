@@ -16,6 +16,17 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 function __makeTemplateObject(cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -1512,6 +1523,22 @@ var Header = function (props) { return (createElement(HeaderWrapper, null,
         createElement(GridItem, { xs: "6/10", horizontalAlign: "end", onClick: function () { return props.openMenu(); } }, "burger menu")))); };
 var templateObject_1$7;
 
+var WhenPromotersExist = function (props) {
+    var promoters = Object.values(props.promoters);
+    return (createElement(GridContainer, { gap: 1 },
+        createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
+        promoters.map(function (promoter) { return (createElement(GridItem, { xs: "1/13" },
+            createElement(Surface, null,
+                createElement(PromoterCard, { promoter: promoter })))); })));
+};
+var WhenNoPromoters = function (props) { return (createElement(GridContainer, { gap: 1 },
+    createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
+var ManagePromoterList = function (props) {
+    return (createElement(EnumState, { e: props.promoters, onEmpty: function () { return createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return createElement(WhenPromotersExist, __assign({}, props)); } }));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1531,5 +1558,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, P, PromoterCard, SignInForm, Surface, TextArea, lightTheme };
+export { Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManagePromoterList, P, PromoterCard, SignInForm, Surface, TextArea, lightTheme };
 //# sourceMappingURL=index.es.js.map

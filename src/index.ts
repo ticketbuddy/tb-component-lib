@@ -10,6 +10,7 @@ export * from "./components/Image"
 export * from "./components/PromoterCard"
 export * from "./components/EnumState"
 export * from "./components/Header"
+export * from "./components/ManagePromoterList"
 
 // types
 export * from "./components/promoter"
