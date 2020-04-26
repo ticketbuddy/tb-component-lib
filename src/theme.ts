@@ -1,7 +1,7 @@
 // https://material.io/design/color/#color-theme-creation
 import { DefaultTheme } from 'styled-components'
 
-const lightTheme: DefaultTheme = {
+export const lightTheme: DefaultTheme = {
   // A primary color is the color displayed most frequently across your app’s screens and components.
   primaryColorDark: "#0779bc",
   primaryColorLight: "#0FACF3",
@@ -26,5 +26,3 @@ const lightTheme: DefaultTheme = {
   headingFontFamily: "Quicksand, sans-serif",
   textFontFamily: "Quicksand, sans-serif"
 };
-
-export { lightTheme }

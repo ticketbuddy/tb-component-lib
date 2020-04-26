@@ -1,6 +1,6 @@
 {
   "name": "tb-component-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -44,8 +44,8 @@
     "typescript": "^3.7.3"
   },
   "peerDependencies": {
-    "react": "^16",
-    "react-dom": "^16",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "styled-components": "^5.1.0"
   },
   "jest": {

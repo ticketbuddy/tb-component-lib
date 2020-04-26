@@ -1,3 +1,2 @@
 import { DefaultTheme } from 'styled-components';
-declare const lightTheme: DefaultTheme;
-export { lightTheme };
+export declare const lightTheme: DefaultTheme;
