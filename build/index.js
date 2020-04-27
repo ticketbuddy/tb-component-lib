@@ -1534,6 +1534,17 @@ var ActivityCard = function (_a) {
                 React.createElement(Button, null, "Edit")))));
 };
 
+var ActivityDateCard = function (_a) {
+    var activityDate = _a.activityDate;
+    return (React.createElement(Surface, { shadow: 10 },
+        React.createElement(Surface, { padding: 1 },
+            React.createElement(H2, null, "An activity date..."),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/edit" },
+                React.createElement(Button, null, "Edit")),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/tickets" },
+                React.createElement(Button, null, "Tickets")))));
+};
+
 var EnumState = function (_a) {
     var e = _a.e, onEmpty = _a.onEmpty, onPopulated = _a.onPopulated;
     if (Object.keys(e).length === 0)
@@ -1578,6 +1589,22 @@ var WhenNoActivities = function (props) { return (React.createElement(GridContai
         React.createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
 var ManageActivityList = function (props) {
     return (React.createElement(EnumState, { e: props.activities, onEmpty: function () { return React.createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivitiesExist, __assign({}, props)); } }));
+};
+
+var WhenActivityDateExists = function (props) {
+    var activityDates = Object.values(props.activityDates);
+    return (React.createElement(GridContainer, { gap: 1 },
+        React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            React.createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "New date")),
+        activityDates.map(function (activityDate) { return (React.createElement(GridItem, { xs: "1/13" },
+            React.createElement(Surface, null,
+                React.createElement(ActivityDateCard, { activityDate: activityDate })))); })));
+};
+var WhenNoActivityDates = function (props) { return (React.createElement(GridContainer, { gap: 1 },
+    React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        React.createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
+var ManageActivityDateList = function (props) {
+    return (React.createElement(EnumState, { e: props.activityDates, onEmpty: function () { return React.createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivityDateExists, __assign({}, props)); } }));
 };
 
 var PersonState = function (_a) {
@@ -1683,6 +1710,7 @@ var lightTheme = {
 };
 
 exports.ActivityCard = ActivityCard;
+exports.ActivityDateCard = ActivityDateCard;
 exports.ActivityDateForm = ActivityDateForm;
 exports.ActivityDescriptionForm = ActivityDescriptionForm;
 exports.Button = Button;
@@ -1700,6 +1728,7 @@ exports.Image = Image;
 exports.ImageContainer = ImageContainer;
 exports.Input = Input;
 exports.LegalNotice = LegalNotice;
+exports.ManageActivityDateList = ManageActivityDateList;
 exports.ManageActivityList = ManageActivityList;
 exports.ManagePromoterList = ManagePromoterList;
 exports.P = P;

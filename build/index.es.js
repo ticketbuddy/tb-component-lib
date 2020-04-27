@@ -1527,6 +1527,17 @@ var ActivityCard = function (_a) {
                 createElement(Button, null, "Edit")))));
 };
 
+var ActivityDateCard = function (_a) {
+    var activityDate = _a.activityDate;
+    return (createElement(Surface, { shadow: 10 },
+        createElement(Surface, { padding: 1 },
+            createElement(H2, null, "An activity date..."),
+            createElement(Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/edit" },
+                createElement(Button, null, "Edit")),
+            createElement(Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/tickets" },
+                createElement(Button, null, "Tickets")))));
+};
+
 var EnumState = function (_a) {
     var e = _a.e, onEmpty = _a.onEmpty, onPopulated = _a.onPopulated;
     if (Object.keys(e).length === 0)
@@ -1571,6 +1582,22 @@ var WhenNoActivities = function (props) { return (createElement(GridContainer, {
         createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
 var ManageActivityList = function (props) {
     return (createElement(EnumState, { e: props.activities, onEmpty: function () { return createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivitiesExist, __assign({}, props)); } }));
+};
+
+var WhenActivityDateExists = function (props) {
+    var activityDates = Object.values(props.activityDates);
+    return (createElement(GridContainer, { gap: 1 },
+        createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "New date")),
+        activityDates.map(function (activityDate) { return (createElement(GridItem, { xs: "1/13" },
+            createElement(Surface, null,
+                createElement(ActivityDateCard, { activityDate: activityDate })))); })));
+};
+var WhenNoActivityDates = function (props) { return (createElement(GridContainer, { gap: 1 },
+    createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
+var ManageActivityDateList = function (props) {
+    return (createElement(EnumState, { e: props.activityDates, onEmpty: function () { return createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivityDateExists, __assign({}, props)); } }));
 };
 
 var PersonState = function (_a) {
@@ -1675,5 +1702,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityList, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, lightTheme };
 //# sourceMappingURL=index.es.js.map
