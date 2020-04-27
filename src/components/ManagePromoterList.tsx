@@ -21,7 +21,7 @@ const WhenPromotersExist = (props: ManagePromoterListProps) => {
       </GridItem>
       {promoters.map((promoter: Promoter) => (
         <GridItem xs="1/13">
-          <Link to={`/dashboard/promoter/${promoter.promoter_id}`}>
+          <Link to={`/dashboard/promoter/${promoter.promoter_id}/edit`}>
             <Surface>
               <PromoterCard promoter={promoter} />
             </Surface>
