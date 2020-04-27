@@ -1537,7 +1537,7 @@ var WhenPromotersExist = function (props) {
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
             React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (React.createElement(GridItem, { xs: "1/13" },
-            React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
                 React.createElement(Surface, null,
                     React.createElement(PromoterCard, { promoter: promoter }))))); })));
 };

@@ -1530,7 +1530,7 @@ var WhenPromotersExist = function (props) {
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
             createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (createElement(GridItem, { xs: "1/13" },
-            createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
+            createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
                 createElement(Surface, null,
                     createElement(PromoterCard, { promoter: promoter }))))); })));
 };
