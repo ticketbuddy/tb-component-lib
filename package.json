@@ -42,7 +42,8 @@
     "standard-prettier": "^1.0.1",
     "styled-components": "^5.1.0",
     "ts-jest": "^24.2.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "react-router-dom": "^5.1.2"
   },
   "peerDependencies": {
     "react": "^16.9.0",

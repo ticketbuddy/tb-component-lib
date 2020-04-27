@@ -1514,7 +1514,24 @@ var PromoterCard = function (_a) {
     return (React.createElement(Surface, { shadow: 10 },
         React.createElement(Image, { height: "200px", src: promoter.logo || alternativePromoterLogo }),
         React.createElement(Surface, { padding: 1 },
-            React.createElement(H2, null, promoter.title))));
+            React.createElement(H2, null, promoter.title),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
+                React.createElement(Button, null, "Edit")),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
+                React.createElement(Button, null, "Events")))));
+};
+
+var ActivityCard = function (_a) {
+    var activity = _a.activity;
+    var alternativeActivityLogo = "/alternativeActivityLogo.png";
+    return (React.createElement(Surface, { shadow: 10 },
+        React.createElement(Image, { height: "200px", src: activity.logo || alternativeActivityLogo }),
+        React.createElement(Surface, { padding: 1 },
+            React.createElement(H2, null, activity.title),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/event/" + activity.activity_id + "/dates" },
+                React.createElement(Button, null, "Manage Dates")),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/event/" + activity.activity_id + "/edit" },
+                React.createElement(Button, null, "Edit")))));
 };
 
 var EnumState = function (_a) {
@@ -1537,15 +1554,30 @@ var WhenPromotersExist = function (props) {
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
             React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (React.createElement(GridItem, { xs: "1/13" },
-            React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
-                React.createElement(Surface, null,
-                    React.createElement(PromoterCard, { promoter: promoter }))))); })));
+            React.createElement(Surface, null,
+                React.createElement(PromoterCard, { promoter: promoter })))); })));
 };
 var WhenNoPromoters = function (props) { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
 var ManagePromoterList = function (props) {
     return (React.createElement(EnumState, { e: props.promoters, onEmpty: function () { return React.createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenPromotersExist, __assign({}, props)); } }));
+};
+
+var WhenActivitiesExist = function (props) {
+    var activities = Object.values(props.activities);
+    return (React.createElement(GridContainer, { gap: 1 },
+        React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            React.createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "New activity")),
+        activities.map(function (activity) { return (React.createElement(GridItem, { xs: "1/13" },
+            React.createElement(Surface, null,
+                React.createElement(ActivityCard, { activity: activity })))); })));
+};
+var WhenNoActivities = function (props) { return (React.createElement(GridContainer, { gap: 1 },
+    React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        React.createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
+var ManageActivityList = function (props) {
+    return (React.createElement(EnumState, { e: props.activities, onEmpty: function () { return React.createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivitiesExist, __assign({}, props)); } }));
 };
 
 var PersonState = function (_a) {
@@ -1650,6 +1682,7 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
+exports.ActivityCard = ActivityCard;
 exports.ActivityDateForm = ActivityDateForm;
 exports.ActivityDescriptionForm = ActivityDescriptionForm;
 exports.Button = Button;
@@ -1667,6 +1700,7 @@ exports.Image = Image;
 exports.ImageContainer = ImageContainer;
 exports.Input = Input;
 exports.LegalNotice = LegalNotice;
+exports.ManageActivityList = ManageActivityList;
 exports.ManagePromoterList = ManagePromoterList;
 exports.P = P;
 exports.PersonState = PersonState;

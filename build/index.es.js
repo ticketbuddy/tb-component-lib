@@ -1507,7 +1507,24 @@ var PromoterCard = function (_a) {
     return (createElement(Surface, { shadow: 10 },
         createElement(Image, { height: "200px", src: promoter.logo || alternativePromoterLogo }),
         createElement(Surface, { padding: 1 },
-            createElement(H2, null, promoter.title))));
+            createElement(H2, null, promoter.title),
+            createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
+                createElement(Button, null, "Edit")),
+            createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
+                createElement(Button, null, "Events")))));
+};
+
+var ActivityCard = function (_a) {
+    var activity = _a.activity;
+    var alternativeActivityLogo = "/alternativeActivityLogo.png";
+    return (createElement(Surface, { shadow: 10 },
+        createElement(Image, { height: "200px", src: activity.logo || alternativeActivityLogo }),
+        createElement(Surface, { padding: 1 },
+            createElement(H2, null, activity.title),
+            createElement(Link, { to: "/dashboard/event/" + activity.activity_id + "/dates" },
+                createElement(Button, null, "Manage Dates")),
+            createElement(Link, { to: "/dashboard/event/" + activity.activity_id + "/edit" },
+                createElement(Button, null, "Edit")))));
 };
 
 var EnumState = function (_a) {
@@ -1530,15 +1547,30 @@ var WhenPromotersExist = function (props) {
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
             createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (createElement(GridItem, { xs: "1/13" },
-            createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
-                createElement(Surface, null,
-                    createElement(PromoterCard, { promoter: promoter }))))); })));
+            createElement(Surface, null,
+                createElement(PromoterCard, { promoter: promoter })))); })));
 };
 var WhenNoPromoters = function (props) { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
 var ManagePromoterList = function (props) {
     return (createElement(EnumState, { e: props.promoters, onEmpty: function () { return createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return createElement(WhenPromotersExist, __assign({}, props)); } }));
+};
+
+var WhenActivitiesExist = function (props) {
+    var activities = Object.values(props.activities);
+    return (createElement(GridContainer, { gap: 1 },
+        createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "New activity")),
+        activities.map(function (activity) { return (createElement(GridItem, { xs: "1/13" },
+            createElement(Surface, null,
+                createElement(ActivityCard, { activity: activity })))); })));
+};
+var WhenNoActivities = function (props) { return (createElement(GridContainer, { gap: 1 },
+    createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
+var ManageActivityList = function (props) {
+    return (createElement(EnumState, { e: props.activities, onEmpty: function () { return createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivitiesExist, __assign({}, props)); } }));
 };
 
 var PersonState = function (_a) {
@@ -1643,5 +1675,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, lightTheme };
+export { ActivityCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityList, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, lightTheme };
 //# sourceMappingURL=index.es.js.map
