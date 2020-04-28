@@ -1616,6 +1616,22 @@ var ManageActivityDateList = function (props) {
     return (React.createElement(EnumState, { e: props.activityDates, onEmpty: function () { return React.createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivityDateExists, __assign({}, props)); } }));
 };
 
+var WhenTicketsExist = function (props) {
+    var tickets = Object.values(props.tickets);
+    return (React.createElement(GridContainer, { gap: 1 },
+        React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            React.createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "New ticket")),
+        tickets.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
+            React.createElement(Surface, null,
+                React.createElement(TicketCard, { ticket: ticket })))); })));
+};
+var WhenNoTickets = function (props) { return (React.createElement(GridContainer, { gap: 1 },
+    React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        React.createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "Create first ticket")))); };
+var ManageTicketList = function (props) {
+    return (React.createElement(EnumState, { e: props.tickets, onEmpty: function () { return React.createElement(WhenNoTickets, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenTicketsExist, __assign({}, props)); } }));
+};
+
 var PersonState = function (_a) {
     var p = _a.p, onAnonymous = _a.onAnonymous, onAnonymousWithSession = _a.onAnonymousWithSession, onVerified = _a.onVerified;
     if (p.user_status == "anonymous")
@@ -1740,6 +1756,7 @@ exports.LegalNotice = LegalNotice;
 exports.ManageActivityDateList = ManageActivityDateList;
 exports.ManageActivityList = ManageActivityList;
 exports.ManagePromoterList = ManagePromoterList;
+exports.ManageTicketList = ManageTicketList;
 exports.P = P;
 exports.PersonState = PersonState;
 exports.PromoterCard = PromoterCard;

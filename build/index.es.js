@@ -1609,6 +1609,22 @@ var ManageActivityDateList = function (props) {
     return (createElement(EnumState, { e: props.activityDates, onEmpty: function () { return createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivityDateExists, __assign({}, props)); } }));
 };
 
+var WhenTicketsExist = function (props) {
+    var tickets = Object.values(props.tickets);
+    return (createElement(GridContainer, { gap: 1 },
+        createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
+            createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "New ticket")),
+        tickets.map(function (ticket) { return (createElement(GridItem, { xs: "1/13" },
+            createElement(Surface, null,
+                createElement(TicketCard, { ticket: ticket })))); })));
+};
+var WhenNoTickets = function (props) { return (createElement(GridContainer, { gap: 1 },
+    createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "Create first ticket")))); };
+var ManageTicketList = function (props) {
+    return (createElement(EnumState, { e: props.tickets, onEmpty: function () { return createElement(WhenNoTickets, __assign({}, props)); }, onPopulated: function () { return createElement(WhenTicketsExist, __assign({}, props)); } }));
+};
+
 var PersonState = function (_a) {
     var p = _a.p, onAnonymous = _a.onAnonymous, onAnonymousWithSession = _a.onAnonymousWithSession, onVerified = _a.onVerified;
     if (p.user_status == "anonymous")
@@ -1711,5 +1727,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, lightTheme };
 //# sourceMappingURL=index.es.js.map
