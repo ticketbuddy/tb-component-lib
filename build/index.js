@@ -1534,6 +1534,15 @@ var ActivityCard = function (_a) {
                 React.createElement(Button, null, "Edit")))));
 };
 
+var TicketCard = function (_a) {
+    var ticket = _a.ticket;
+    return (React.createElement(Surface, { shadow: 10 },
+        React.createElement(Surface, { padding: 1 },
+            React.createElement(H2, null, ticket.title),
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/ticket/" + ticket.ticket_id + "/edit" },
+                React.createElement(Button, null, "Edit")))));
+};
+
 var ActivityDateCard = function (_a) {
     var activityDate = _a.activityDate;
     return (React.createElement(Surface, { shadow: 10 },
@@ -1738,5 +1747,6 @@ exports.PromoterDescriptionForm = PromoterDescriptionForm;
 exports.SignInForm = SignInForm;
 exports.Surface = Surface;
 exports.TextArea = TextArea;
+exports.TicketCard = TicketCard;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map

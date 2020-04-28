@@ -8,6 +8,7 @@ export * from "./components/SignInForm";
 export * from "./components/Image";
 export * from "./components/PromoterCard";
 export * from "./components/ActivityCard";
+export * from "./components/TicketCard";
 export * from "./components/ActivityDateCard";
 export * from "./components/EnumState";
 export * from "./components/Header";

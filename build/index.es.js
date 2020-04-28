@@ -1527,6 +1527,15 @@ var ActivityCard = function (_a) {
                 createElement(Button, null, "Edit")))));
 };
 
+var TicketCard = function (_a) {
+    var ticket = _a.ticket;
+    return (createElement(Surface, { shadow: 10 },
+        createElement(Surface, { padding: 1 },
+            createElement(H2, null, ticket.title),
+            createElement(Link, { to: "/dashboard/ticket/" + ticket.ticket_id + "/edit" },
+                createElement(Button, null, "Edit")))));
+};
+
 var ActivityDateCard = function (_a) {
     var activityDate = _a.activityDate;
     return (createElement(Surface, { shadow: 10 },
@@ -1702,5 +1711,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, lightTheme };
 //# sourceMappingURL=index.es.js.map
