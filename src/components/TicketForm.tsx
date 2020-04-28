@@ -6,6 +6,8 @@ export type SubmitTicket = (ticket: TicketValues) => void;
 
 export type TicketValues = {
   title: string;
+  quantity: number;
+  amount: number;
 }
 
 interface TicketProps {

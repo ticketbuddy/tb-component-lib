@@ -20,6 +20,7 @@ export * from "./components/PersonState";
 export * from "./components/PromoterDescriptionForm";
 export * from "./components/ActivityDescriptionForm";
 export * from "./components/ActivityDateForm";
+export * from "./components/TicketForm";
 export * from "./components/promoter";
 export * from "./components/person";
 export * from "./components/activity";

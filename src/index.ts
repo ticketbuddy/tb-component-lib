@@ -21,6 +21,7 @@ export * from "./components/PersonState"
 export * from "./components/PromoterDescriptionForm"
 export * from "./components/ActivityDescriptionForm"
 export * from "./components/ActivityDateForm"
+export * from "./components/TicketForm"
 
 // types
 export * from "./components/promoter"

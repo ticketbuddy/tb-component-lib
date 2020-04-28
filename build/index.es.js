@@ -1708,6 +1708,31 @@ var ActivityDateForm = function (props) {
                 createElement(Button, { "data-testid": "submit-activity-date" }, "Save")))));
 };
 
+var TicketForm = function (props) {
+    var ticket = props.ticket;
+    var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitTicket(values);
+    };
+    return (createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        createElement(GridContainer, { gap: 1 },
+            createElement(GridItem, { xs: "1/13" },
+                createElement(H2, { "data-testid": "ticket-description-title" },
+                    "Edit ",
+                    ticket.title)),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: ticket.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
+                errors.title && createElement(Error, null, "A ticket must have a title")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: ticket.quantity, "data-testid": "quantity-input", error: !!errors.quantity, placeholder: "Quantity", name: "quantity", ref: register({ required: true }) }),
+                errors.quantity && createElement(Error, null, "A ticket must have a set quantity that")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Input, { defaultValue: ticket.amount, "data-testid": "amount-input", error: !!errors.amount, placeholder: "Amount", name: "amount", ref: register({ required: true }) }),
+                errors.amount && createElement(Error, null, "A ticket must have an amount")),
+            createElement(GridItem, { xs: "1/13" },
+                createElement(Button, { "data-testid": "submit-ticket-description" }, "Save")))));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1727,5 +1752,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketForm, lightTheme };
 //# sourceMappingURL=index.es.js.map

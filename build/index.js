@@ -1715,6 +1715,31 @@ var ActivityDateForm = function (props) {
                 React.createElement(Button, { "data-testid": "submit-activity-date" }, "Save")))));
 };
 
+var TicketForm = function (props) {
+    var ticket = props.ticket;
+    var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
+    var onSubmit = function (values) {
+        props.submitTicket(values);
+    };
+    return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        React.createElement(GridContainer, { gap: 1 },
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(H2, { "data-testid": "ticket-description-title" },
+                    "Edit ",
+                    ticket.title)),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: ticket.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
+                errors.title && React.createElement(Error, null, "A ticket must have a title")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: ticket.quantity, "data-testid": "quantity-input", error: !!errors.quantity, placeholder: "Quantity", name: "quantity", ref: register({ required: true }) }),
+                errors.quantity && React.createElement(Error, null, "A ticket must have a set quantity that")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Input, { defaultValue: ticket.amount, "data-testid": "amount-input", error: !!errors.amount, placeholder: "Amount", name: "amount", ref: register({ required: true }) }),
+                errors.amount && React.createElement(Error, null, "A ticket must have an amount")),
+            React.createElement(GridItem, { xs: "1/13" },
+                React.createElement(Button, { "data-testid": "submit-ticket-description" }, "Save")))));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1765,5 +1790,6 @@ exports.SignInForm = SignInForm;
 exports.Surface = Surface;
 exports.TextArea = TextArea;
 exports.TicketCard = TicketCard;
+exports.TicketForm = TicketForm;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map
