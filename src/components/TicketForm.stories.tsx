@@ -6,7 +6,7 @@ import { lightTheme } from "../theme"
 export default { title: 'Ticket form' }
 
 const ticket = {
-  ticket_id: "ticket-abc",
+  product_id: "ticket-abc",
   title: "Early bird",
   amount: 34535,
   quantity: 25

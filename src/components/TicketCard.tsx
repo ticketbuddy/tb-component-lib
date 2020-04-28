@@ -6,16 +6,13 @@ interface TicketCardProps {
   ticket: Ticket
 }
 
-export const TicketCard = ({ticket: ticket}: TicketCardProps) => {
-
-  return (
-    <Surface shadow={10}>
-      <Surface padding={1}>
-        <H2>{ticket.title}</H2>
-        <Link to={`/dashboard/ticket/${ticket.ticket_id}/edit`}>
-          <Button>Edit</Button>
-        </Link>
-      </Surface>
+export const TicketCard = ({ticket: ticket}: TicketCardProps) => (
+  <Surface shadow={10}>
+    <Surface padding={1}>
+      <H2>{ticket.title}</H2>
+      <Link to={`/dashboard/ticket/${ticket.product_id}/edit`}>
+        <Button>Edit</Button>
+      </Link>
     </Surface>
-  )
-}
+  </Surface>
+)

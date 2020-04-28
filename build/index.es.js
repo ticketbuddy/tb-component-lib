@@ -1532,7 +1532,7 @@ var TicketCard = function (_a) {
     return (createElement(Surface, { shadow: 10 },
         createElement(Surface, { padding: 1 },
             createElement(H2, null, ticket.title),
-            createElement(Link, { to: "/dashboard/ticket/" + ticket.ticket_id + "/edit" },
+            createElement(Link, { to: "/dashboard/ticket/" + ticket.product_id + "/edit" },
                 createElement(Button, null, "Edit")))));
 };
 

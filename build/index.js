@@ -1539,7 +1539,7 @@ var TicketCard = function (_a) {
     return (React.createElement(Surface, { shadow: 10 },
         React.createElement(Surface, { padding: 1 },
             React.createElement(H2, null, ticket.title),
-            React.createElement(reactRouterDom.Link, { to: "/dashboard/ticket/" + ticket.ticket_id + "/edit" },
+            React.createElement(reactRouterDom.Link, { to: "/dashboard/ticket/" + ticket.product_id + "/edit" },
                 React.createElement(Button, null, "Edit")))));
 };
 
