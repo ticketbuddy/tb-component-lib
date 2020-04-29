@@ -1716,13 +1716,18 @@ var ActivityDateForm = function (props) {
 };
 
 var TicketForm = function (props) {
+    if (!props.leadCreditorId)
+        return null;
     var ticket = props.ticket;
     var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
     var onSubmit = function (values) {
+        var _a;
         props.submitTicket({
             title: values.title,
             quantity: parseInt(values.quantity),
-            amount: parseInt(values.amount)
+            shareholders: (_a = {},
+                _a[props.leadCreditorId] = parseInt(values.amount),
+                _a)
         });
     };
     return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },

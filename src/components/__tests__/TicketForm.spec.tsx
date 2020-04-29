@@ -14,7 +14,7 @@ describe("TicketForm", () => {
   test("when form is submitted, values are parsed before callback is called", async () => {
     const mockSubmitTicket = jest.fn();
 
-    const { getByTestId, queryByTestId } = render(<TicketForm ticket={ticket} submitTicket={mockSubmitTicket} />);
+    const { getByTestId, queryByTestId } = render(<TicketForm ticket={ticket} leadCreditorId={"creditor-12345"} submitTicket={mockSubmitTicket} />);
 
     fireEvent.change(getByTestId("title-input"), { target: { value: 'Early bird' } });
     fireEvent.change(getByTestId("amount-input"), { target: { value: '90000' } });
@@ -29,7 +29,9 @@ describe("TicketForm", () => {
     expect(queryByTestId('quantity-error')).toBeNull();
 
     expect(mockSubmitTicket).toHaveBeenCalledWith({
-      amount: 90000,
+      shareholders: {
+        "creditor-12345": 90000
+      },
       quantity: 300,
       title: "Early bird"
     });

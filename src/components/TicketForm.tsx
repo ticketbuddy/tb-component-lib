@@ -7,7 +7,9 @@ export type SubmitTicket = (ticket: ParsedTicketValues) => void;
 export type ParsedTicketValues = {
   title: string;
   quantity: number;
-  amount: number;
+  shareholders: {
+    [creditorId: string]: number;
+  }
 }
 
 export type TicketValues = {
@@ -19,9 +21,11 @@ export type TicketValues = {
 interface TicketProps {
   ticket: Ticket,
   submitTicket: SubmitTicket
+  leadCreditorId: string;
 }
 
 export const TicketForm = (props: TicketProps) => {
+  if(!props.leadCreditorId) return null;
   const {ticket} = props
   const { register, errors, handleSubmit } = useForm();
 
@@ -29,7 +33,9 @@ export const TicketForm = (props: TicketProps) => {
     props.submitTicket({
       title: values.title,
       quantity: parseInt(values.quantity),
-      amount: parseInt(values.amount)
+      shareholders: {
+        [props.leadCreditorId]: parseInt(values.amount)
+      }
     });
   }
 
