@@ -1712,7 +1712,11 @@ var TicketForm = function (props) {
     var ticket = props.ticket;
     var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
     var onSubmit = function (values) {
-        props.submitTicket(values);
+        props.submitTicket({
+            title: values.title,
+            quantity: parseInt(values.quantity),
+            amount: parseInt(values.amount)
+        });
     };
     return (createElement("form", { onSubmit: handleSubmit(onSubmit) },
         createElement(GridContainer, { gap: 1 },
@@ -1722,15 +1726,15 @@ var TicketForm = function (props) {
                     ticket.title)),
             createElement(GridItem, { xs: "1/13" },
                 createElement(Input, { defaultValue: ticket.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
-                errors.title && createElement(Error, null, "A ticket must have a title")),
+                errors.title && createElement(Error, { "data-testid": "title-error" }, "A ticket must have a title")),
             createElement(GridItem, { xs: "1/13" },
                 createElement(Input, { defaultValue: ticket.quantity, "data-testid": "quantity-input", error: !!errors.quantity, placeholder: "Quantity", name: "quantity", ref: register({ required: true }) }),
-                errors.quantity && createElement(Error, null, "A ticket must have a set quantity that")),
+                errors.quantity && createElement(Error, { "data-testid": "quantity-error" }, "A ticket must have a set quantity that")),
             createElement(GridItem, { xs: "1/13" },
                 createElement(Input, { defaultValue: ticket.amount, "data-testid": "amount-input", error: !!errors.amount, placeholder: "Amount", name: "amount", ref: register({ required: true }) }),
-                errors.amount && createElement(Error, null, "A ticket must have an amount")),
+                errors.amount && createElement(Error, { "data-testid": "amount-error" }, "A ticket must have an amount")),
             createElement(GridItem, { xs: "1/13" },
-                createElement(Button, { "data-testid": "submit-ticket-description" }, "Save")))));
+                createElement(Button, { "data-testid": "submit-ticket" }, "Save")))));
 };
 
 var lightTheme = {

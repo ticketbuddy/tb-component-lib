@@ -1719,7 +1719,11 @@ var TicketForm = function (props) {
     var ticket = props.ticket;
     var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
     var onSubmit = function (values) {
-        props.submitTicket(values);
+        props.submitTicket({
+            title: values.title,
+            quantity: parseInt(values.quantity),
+            amount: parseInt(values.amount)
+        });
     };
     return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },
         React.createElement(GridContainer, { gap: 1 },
@@ -1729,15 +1733,15 @@ var TicketForm = function (props) {
                     ticket.title)),
             React.createElement(GridItem, { xs: "1/13" },
                 React.createElement(Input, { defaultValue: ticket.title, "data-testid": "title-input", error: !!errors.title, placeholder: "Title", name: "title", ref: register({ required: true }) }),
-                errors.title && React.createElement(Error, null, "A ticket must have a title")),
+                errors.title && React.createElement(Error, { "data-testid": "title-error" }, "A ticket must have a title")),
             React.createElement(GridItem, { xs: "1/13" },
                 React.createElement(Input, { defaultValue: ticket.quantity, "data-testid": "quantity-input", error: !!errors.quantity, placeholder: "Quantity", name: "quantity", ref: register({ required: true }) }),
-                errors.quantity && React.createElement(Error, null, "A ticket must have a set quantity that")),
+                errors.quantity && React.createElement(Error, { "data-testid": "quantity-error" }, "A ticket must have a set quantity that")),
             React.createElement(GridItem, { xs: "1/13" },
                 React.createElement(Input, { defaultValue: ticket.amount, "data-testid": "amount-input", error: !!errors.amount, placeholder: "Amount", name: "amount", ref: register({ required: true }) }),
-                errors.amount && React.createElement(Error, null, "A ticket must have an amount")),
+                errors.amount && React.createElement(Error, { "data-testid": "amount-error" }, "A ticket must have an amount")),
             React.createElement(GridItem, { xs: "1/13" },
-                React.createElement(Button, { "data-testid": "submit-ticket-description" }, "Save")))));
+                React.createElement(Button, { "data-testid": "submit-ticket" }, "Save")))));
 };
 
 var lightTheme = {
