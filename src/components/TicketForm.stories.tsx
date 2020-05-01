@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { TicketForm, TicketValues } from './TicketForm'
+import { TicketForm, ParsedTicketValues } from './TicketForm'
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from "../theme"
 
@@ -12,8 +12,10 @@ const ticket = {
   quantity: 25
 }
 
+const creditorId = "creditor_123456789"
+
 export const basic = () => (
   <ThemeProvider theme={lightTheme}>
-    <TicketForm ticket={ticket} submitTicket={((values: TicketValues) => { console.log(values); })} />
+    <TicketForm ticket={ticket} leadCreditorId={creditorId} submitTicket={((values: ParsedTicketValues) => { console.log(values); })} />
   </ThemeProvider>
 )

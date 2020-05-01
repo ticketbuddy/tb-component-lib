@@ -25,7 +25,6 @@ interface TicketProps {
 }
 
 export const TicketForm = (props: TicketProps) => {
-  if(!props.leadCreditorId) return null;
   const {ticket} = props
   const { register, errors, handleSubmit } = useForm();
 
