@@ -18,5 +18,5 @@ interface TicketProps {
     submitTicket: SubmitTicket;
     leadCreditorId: string;
 }
-export declare const TicketForm: (props: TicketProps) => JSX.Element | null;
+export declare const TicketForm: (props: TicketProps) => JSX.Element;
 export {};

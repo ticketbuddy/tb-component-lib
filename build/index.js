@@ -1554,6 +1554,18 @@ var ActivityDateCard = function (_a) {
                 React.createElement(Button, null, "Tickets")))));
 };
 
+var BuyTicketCard = function (_a) {
+    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
+    return (React.createElement(Surface, { shadow: 10 },
+        React.createElement(Surface, { padding: 1 },
+            React.createElement(GridContainer, { gap: 1 },
+                React.createElement(GridItem, { xs: "1/6" },
+                    React.createElement(H3, null, ticket.title),
+                    React.createElement(P, { muted: true }, ticket.amount)),
+                React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
+                    React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"))))));
+};
+
 var EnumState = function (_a) {
     var e = _a.e, onEmpty = _a.onEmpty, onPopulated = _a.onPopulated;
     if (Object.keys(e).length === 0)
@@ -1716,8 +1728,6 @@ var ActivityDateForm = function (props) {
 };
 
 var TicketForm = function (props) {
-    if (!props.leadCreditorId)
-        return null;
     var ticket = props.ticket;
     var _a = useForm(), register = _a.register, errors = _a.errors, handleSubmit = _a.handleSubmit;
     var onSubmit = function (values) {
@@ -1749,6 +1759,20 @@ var TicketForm = function (props) {
                 React.createElement(Button, { "data-testid": "submit-ticket" }, "Save")))));
 };
 
+var ShowTickets = function (_a) {
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var ticketList = Object.values(tickets);
+    return (React.createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
+        React.createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
+};
+var NoTickets = function () { return (React.createElement(GridContainer, { gap: 1 },
+    React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
+        React.createElement(H2, null, "Sorry, no tickets available!")))); };
+var TicketCollection = function (_a) {
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    return (React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } }));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1773,6 +1797,7 @@ exports.ActivityDateCard = ActivityDateCard;
 exports.ActivityDateForm = ActivityDateForm;
 exports.ActivityDescriptionForm = ActivityDescriptionForm;
 exports.Button = Button;
+exports.BuyTicketCard = BuyTicketCard;
 exports.EnumState = EnumState;
 exports.Error = Error;
 exports.GridContainer = GridContainer;
@@ -1799,6 +1824,7 @@ exports.SignInForm = SignInForm;
 exports.Surface = Surface;
 exports.TextArea = TextArea;
 exports.TicketCard = TicketCard;
+exports.TicketCollection = TicketCollection;
 exports.TicketForm = TicketForm;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map
