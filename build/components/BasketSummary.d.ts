@@ -1,10 +1,6 @@
 /// <reference types="react" />
+import { Seat } from "../";
 export declare type OnUnreserve = (seatId: string) => void;
-export declare type Seat = {
-    item_id: string;
-    title: string;
-    amount: number;
-};
 interface BasketSummaryProps {
     basketItems: {
         [seatId: string]: Seat;

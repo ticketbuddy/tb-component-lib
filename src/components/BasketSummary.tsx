@@ -1,13 +1,7 @@
 import * as React from "react"
-import {GridContainer, GridItem, P, Button} from "../";
+import {Seat, GridContainer, GridItem, P, Button} from "../";
 
 export type OnUnreserve = (seatId: string) => void
-
-export type Seat = {
-  item_id: string;
-  title: string;
-  amount: number;
-}
 
 interface BasketSummaryProps {
   basketItems: {

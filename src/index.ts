@@ -32,6 +32,7 @@ export * from "./components/person"
 export * from "./components/activity"
 export * from "./components/activityDate"
 export * from "./components/ticket"
+export * from "./components/seat"
 
 // themes
 export * from "./theme"
