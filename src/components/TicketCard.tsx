@@ -7,12 +7,10 @@ interface TicketCardProps {
 }
 
 export const TicketCard = ({ticket: ticket}: TicketCardProps) => (
-  <Surface shadow={10}>
-    <Surface padding={1}>
-      <H2>{ticket.title}</H2>
-      <Link to={`/dashboard/ticket/${ticket.product_id}/edit`}>
-        <Button>Edit</Button>
-      </Link>
-    </Surface>
+  <Surface padding={1} shadow={10} data-testid="ticket-card">
+    <H2>{ticket.title}</H2>
+    <Link to={`/dashboard/ticket/${ticket.product_id}/edit`}>
+      <Button>Edit</Button>
+    </Link>
   </Surface>
 )

@@ -10,15 +10,15 @@ export const PromoterCard = ({promoter: promoter}: PromoterCardProps) => {
   const alternativePromoterLogo = "/alternativePromoterLogo.png"
 
   return (
-    <Surface shadow={10}>
+    <Surface shadow={10} data-testid="promoter-card">
       <Image height="200px" src={promoter.logo || alternativePromoterLogo} />
       <Surface padding={1}>
         <H2>{promoter.title}</H2>
         <Link to={`/dashboard/promoter/${promoter.promoter_id}/edit`}>
-          <Button>Edit</Button>
+          <Button data-testid="edit-promoter-btn">Edit</Button>
         </Link>
         <Link to={`/dashboard/promoter/${promoter.promoter_id}`}>
-          <Button>Events</Button>
+          <Button data-testid="manage-promoter-events-btn">Events</Button>
         </Link>
       </Surface>
     </Surface>

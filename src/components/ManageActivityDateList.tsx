@@ -39,10 +39,12 @@ const WhenNoActivityDates = (props: ManageActivityDateListProps) => (
 
 export const ManageActivityDateList = (props: ManageActivityDateListProps) => {
   return (
-    <EnumState
-      e={props.activityDates}
-      onEmpty={() => <WhenNoActivityDates {...props} />}
-      onPopulated={() => <WhenActivityDateExists {...props} />}
-    />
+    <div data-testid="manage-activity-date-list">
+      <EnumState
+        e={props.activityDates}
+        onEmpty={() => <WhenNoActivityDates {...props} />}
+        onPopulated={() => <WhenActivityDateExists {...props} />}
+      />
+    </div>
   )
 }

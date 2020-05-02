@@ -1504,59 +1504,57 @@ var templateObject_1$6, templateObject_2$4;
 var PromoterCard = function (_a) {
     var promoter = _a.promoter;
     var alternativePromoterLogo = "/alternativePromoterLogo.png";
-    return (createElement(Surface, { shadow: 10 },
+    return (createElement(Surface, { shadow: 10, "data-testid": "promoter-card" },
         createElement(Image, { height: "200px", src: promoter.logo || alternativePromoterLogo }),
         createElement(Surface, { padding: 1 },
             createElement(H2, null, promoter.title),
             createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
-                createElement(Button, null, "Edit")),
+                createElement(Button, { "data-testid": "edit-promoter-btn" }, "Edit")),
             createElement(Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
-                createElement(Button, null, "Events")))));
+                createElement(Button, { "data-testid": "manage-promoter-events-btn" }, "Events")))));
 };
 
 var ActivityCard = function (_a) {
     var activity = _a.activity;
     var alternativeActivityLogo = "/alternativeActivityLogo.png";
-    return (createElement(Surface, { shadow: 10 },
+    return (createElement(Surface, { shadow: 10, "data-testid": "activity-card" },
         createElement(Image, { height: "200px", src: activity.logo || alternativeActivityLogo }),
         createElement(Surface, { padding: 1 },
             createElement(H2, null, activity.title),
             createElement(Link, { to: "/dashboard/event/" + activity.activity_id + "/dates" },
-                createElement(Button, null, "Manage Dates")),
+                createElement(Button, { "data-testid": "manage-dates-btn" }, "Manage Dates")),
             createElement(Link, { to: "/dashboard/event/" + activity.activity_id + "/edit" },
-                createElement(Button, null, "Edit")))));
+                createElement(Button, { "data-testid": "edit-activity-btn" }, "Edit")))));
 };
 
 var TicketCard = function (_a) {
     var ticket = _a.ticket;
-    return (createElement(Surface, { shadow: 10 },
-        createElement(Surface, { padding: 1 },
-            createElement(H2, null, ticket.title),
-            createElement(Link, { to: "/dashboard/ticket/" + ticket.product_id + "/edit" },
-                createElement(Button, null, "Edit")))));
+    return (createElement(Surface, { padding: 1, shadow: 10, "data-testid": "ticket-card" },
+        createElement(H2, null, ticket.title),
+        createElement(Link, { to: "/dashboard/ticket/" + ticket.product_id + "/edit" },
+            createElement(Button, null, "Edit"))));
 };
 
 var ActivityDateCard = function (_a) {
     var activityDate = _a.activityDate;
-    return (createElement(Surface, { shadow: 10 },
+    return (createElement(Surface, { shadow: 10, "data-testid": "activity-date-card" },
         createElement(Surface, { padding: 1 },
             createElement(H2, null, "An activity date..."),
             createElement(Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/edit" },
-                createElement(Button, null, "Edit")),
+                createElement(Button, { "data-testid": "edit-activity-date-btn" }, "Edit")),
             createElement(Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/tickets" },
-                createElement(Button, null, "Tickets")))));
+                createElement(Button, { "data-testid": "manage-activity-date-tickets-btn" }, "Tickets")))));
 };
 
 var BuyTicketCard = function (_a) {
     var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
-    return (createElement(Surface, { shadow: 10 },
-        createElement(Surface, { padding: 1 },
-            createElement(GridContainer, { gap: 1 },
-                createElement(GridItem, { xs: "1/6" },
-                    createElement(H3, null, ticket.title),
-                    createElement(P, { muted: true }, ticket.amount)),
-                createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                    createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"))))));
+    return (createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
+        createElement(GridContainer, { gap: 1 },
+            createElement(GridItem, { xs: "1/6" },
+                createElement(H3, null, ticket.title),
+                createElement(P, { muted: true }, ticket.amount)),
+            createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
+                createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
 };
 
 var EnumState = function (_a) {
@@ -1567,7 +1565,7 @@ var EnumState = function (_a) {
 };
 
 var HeaderWrapper = styled.header(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  background: ", ";\n  padding: 15px 0;\n  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);\n"], ["\n  background: ", ";\n  padding: 15px 0;\n  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);\n"])), function (props) { return props.theme.primaryColorDark; });
-var Header = function (props) { return (createElement(HeaderWrapper, null,
+var Header = function (props) { return (createElement(HeaderWrapper, { "data-testid": "header" },
     createElement(GridContainer, null,
         createElement(GridItem, { xs: "3/6" }, "logo"),
         createElement(GridItem, { xs: "6/10", horizontalAlign: "end", onClick: function () { return props.openMenu(); } }, "burger menu")))); };
@@ -1577,16 +1575,17 @@ var WhenPromotersExist = function (props) {
     var promoters = Object.values(props.promoters);
     return (createElement(GridContainer, { gap: 1 },
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
+            createElement(Button, { "data-testid": "create-promoter-btn", onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (createElement(GridItem, { xs: "1/13" },
             createElement(Surface, null,
                 createElement(PromoterCard, { promoter: promoter })))); })));
 };
 var WhenNoPromoters = function (props) { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
+        createElement(Button, { "data-testid": "create-first-promoter-btn", onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
 var ManagePromoterList = function (props) {
-    return (createElement(EnumState, { e: props.promoters, onEmpty: function () { return createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return createElement(WhenPromotersExist, __assign({}, props)); } }));
+    return (createElement("div", { "data-testid": "manage-promoter-list" },
+        createElement(EnumState, { e: props.promoters, onEmpty: function () { return createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return createElement(WhenPromotersExist, __assign({}, props)); } })));
 };
 
 var WhenActivitiesExist = function (props) {
@@ -1602,7 +1601,8 @@ var WhenNoActivities = function (props) { return (createElement(GridContainer, {
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
 var ManageActivityList = function (props) {
-    return (createElement(EnumState, { e: props.activities, onEmpty: function () { return createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivitiesExist, __assign({}, props)); } }));
+    return (createElement("div", { "data-testid": "manage-activity-list" },
+        createElement(EnumState, { e: props.activities, onEmpty: function () { return createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivitiesExist, __assign({}, props)); } })));
 };
 
 var WhenActivityDateExists = function (props) {
@@ -1618,7 +1618,8 @@ var WhenNoActivityDates = function (props) { return (createElement(GridContainer
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
 var ManageActivityDateList = function (props) {
-    return (createElement(EnumState, { e: props.activityDates, onEmpty: function () { return createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivityDateExists, __assign({}, props)); } }));
+    return (createElement("div", { "data-testid": "manage-activity-date-list" },
+        createElement(EnumState, { e: props.activityDates, onEmpty: function () { return createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivityDateExists, __assign({}, props)); } })));
 };
 
 var WhenTicketsExist = function (props) {
@@ -1763,13 +1764,14 @@ var NoTickets = function () { return (createElement(GridContainer, { gap: 1 },
         createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
     var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
-    return (createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } }));
+    return (createElement("div", { "data-testid": "ticket-collection" },
+        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
 var BasketSummary = function (_a) {
     var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
     var basketItemsList = Object.values(basketItems);
-    return (createElement(GridContainer, { gap: 1 }, basketItemsList.map(function (seat) { return (createElement(Fragment, null,
+    return (createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" }, basketItemsList.map(function (seat) { return (createElement(Fragment, null,
         createElement(GridItem, { xs: "1/7" },
             createElement(P, null, seat.title),
             createElement(P, { sm: true }, seat.amount)),

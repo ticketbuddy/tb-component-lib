@@ -16,7 +16,7 @@ const WhenPromotersExist = (props: ManagePromoterListProps) => {
   return (
     <GridContainer gap={1}>
       <GridItem xs="1/13" horizontalAlign="end">
-        <Button onClick={() => props.onNewPromoter()}>New promoter</Button>
+        <Button data-testid="create-promoter-btn" onClick={() => props.onNewPromoter()}>New promoter</Button>
       </GridItem>
       {promoters.map((promoter: Promoter) => (
         <GridItem xs="1/13">
@@ -32,17 +32,19 @@ const WhenPromotersExist = (props: ManagePromoterListProps) => {
 const WhenNoPromoters = (props: ManagePromoterListProps) => (
   <GridContainer gap={1}>
     <GridItem xs="1/13" horizontalAlign="center">
-      <Button onClick={() => props.onNewPromoter()}>Create first promoter</Button>
+      <Button data-testid="create-first-promoter-btn" onClick={() => props.onNewPromoter()}>Create first promoter</Button>
     </GridItem>
   </GridContainer>
 )
 
 export const ManagePromoterList = (props: ManagePromoterListProps) => {
   return (
-    <EnumState
-      e={props.promoters}
-      onEmpty={() => <WhenNoPromoters {...props} />}
-      onPopulated={() => <WhenPromotersExist {...props} />}
-    />
+    <div data-testid="manage-promoter-list">
+      <EnumState
+        e={props.promoters}
+        onEmpty={() => <WhenNoPromoters {...props} />}
+        onPopulated={() => <WhenPromotersExist {...props} />}
+      />
+    </div>
   )
 }

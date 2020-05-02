@@ -1511,59 +1511,57 @@ var templateObject_1$6, templateObject_2$4;
 var PromoterCard = function (_a) {
     var promoter = _a.promoter;
     var alternativePromoterLogo = "/alternativePromoterLogo.png";
-    return (React.createElement(Surface, { shadow: 10 },
+    return (React.createElement(Surface, { shadow: 10, "data-testid": "promoter-card" },
         React.createElement(Image, { height: "200px", src: promoter.logo || alternativePromoterLogo }),
         React.createElement(Surface, { padding: 1 },
             React.createElement(H2, null, promoter.title),
             React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id + "/edit" },
-                React.createElement(Button, null, "Edit")),
+                React.createElement(Button, { "data-testid": "edit-promoter-btn" }, "Edit")),
             React.createElement(reactRouterDom.Link, { to: "/dashboard/promoter/" + promoter.promoter_id },
-                React.createElement(Button, null, "Events")))));
+                React.createElement(Button, { "data-testid": "manage-promoter-events-btn" }, "Events")))));
 };
 
 var ActivityCard = function (_a) {
     var activity = _a.activity;
     var alternativeActivityLogo = "/alternativeActivityLogo.png";
-    return (React.createElement(Surface, { shadow: 10 },
+    return (React.createElement(Surface, { shadow: 10, "data-testid": "activity-card" },
         React.createElement(Image, { height: "200px", src: activity.logo || alternativeActivityLogo }),
         React.createElement(Surface, { padding: 1 },
             React.createElement(H2, null, activity.title),
             React.createElement(reactRouterDom.Link, { to: "/dashboard/event/" + activity.activity_id + "/dates" },
-                React.createElement(Button, null, "Manage Dates")),
+                React.createElement(Button, { "data-testid": "manage-dates-btn" }, "Manage Dates")),
             React.createElement(reactRouterDom.Link, { to: "/dashboard/event/" + activity.activity_id + "/edit" },
-                React.createElement(Button, null, "Edit")))));
+                React.createElement(Button, { "data-testid": "edit-activity-btn" }, "Edit")))));
 };
 
 var TicketCard = function (_a) {
     var ticket = _a.ticket;
-    return (React.createElement(Surface, { shadow: 10 },
-        React.createElement(Surface, { padding: 1 },
-            React.createElement(H2, null, ticket.title),
-            React.createElement(reactRouterDom.Link, { to: "/dashboard/ticket/" + ticket.product_id + "/edit" },
-                React.createElement(Button, null, "Edit")))));
+    return (React.createElement(Surface, { padding: 1, shadow: 10, "data-testid": "ticket-card" },
+        React.createElement(H2, null, ticket.title),
+        React.createElement(reactRouterDom.Link, { to: "/dashboard/ticket/" + ticket.product_id + "/edit" },
+            React.createElement(Button, null, "Edit"))));
 };
 
 var ActivityDateCard = function (_a) {
     var activityDate = _a.activityDate;
-    return (React.createElement(Surface, { shadow: 10 },
+    return (React.createElement(Surface, { shadow: 10, "data-testid": "activity-date-card" },
         React.createElement(Surface, { padding: 1 },
             React.createElement(H2, null, "An activity date..."),
             React.createElement(reactRouterDom.Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/edit" },
-                React.createElement(Button, null, "Edit")),
+                React.createElement(Button, { "data-testid": "edit-activity-date-btn" }, "Edit")),
             React.createElement(reactRouterDom.Link, { to: "/dashboard/date/" + activityDate.activity_date_id + "/tickets" },
-                React.createElement(Button, null, "Tickets")))));
+                React.createElement(Button, { "data-testid": "manage-activity-date-tickets-btn" }, "Tickets")))));
 };
 
 var BuyTicketCard = function (_a) {
     var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
-    return (React.createElement(Surface, { shadow: 10 },
-        React.createElement(Surface, { padding: 1 },
-            React.createElement(GridContainer, { gap: 1 },
-                React.createElement(GridItem, { xs: "1/6" },
-                    React.createElement(H3, null, ticket.title),
-                    React.createElement(P, { muted: true }, ticket.amount)),
-                React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                    React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"))))));
+    return (React.createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
+        React.createElement(GridContainer, { gap: 1 },
+            React.createElement(GridItem, { xs: "1/6" },
+                React.createElement(H3, null, ticket.title),
+                React.createElement(P, { muted: true }, ticket.amount)),
+            React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
+                React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
 };
 
 var EnumState = function (_a) {
@@ -1574,7 +1572,7 @@ var EnumState = function (_a) {
 };
 
 var HeaderWrapper = styled__default.header(templateObject_1$7 || (templateObject_1$7 = __makeTemplateObject(["\n  background: ", ";\n  padding: 15px 0;\n  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);\n"], ["\n  background: ", ";\n  padding: 15px 0;\n  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);\n"])), function (props) { return props.theme.primaryColorDark; });
-var Header = function (props) { return (React.createElement(HeaderWrapper, null,
+var Header = function (props) { return (React.createElement(HeaderWrapper, { "data-testid": "header" },
     React.createElement(GridContainer, null,
         React.createElement(GridItem, { xs: "3/6" }, "logo"),
         React.createElement(GridItem, { xs: "6/10", horizontalAlign: "end", onClick: function () { return props.openMenu(); } }, "burger menu")))); };
@@ -1584,16 +1582,17 @@ var WhenPromotersExist = function (props) {
     var promoters = Object.values(props.promoters);
     return (React.createElement(GridContainer, { gap: 1 },
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
+            React.createElement(Button, { "data-testid": "create-promoter-btn", onClick: function () { return props.onNewPromoter(); } }, "New promoter")),
         promoters.map(function (promoter) { return (React.createElement(GridItem, { xs: "1/13" },
             React.createElement(Surface, null,
                 React.createElement(PromoterCard, { promoter: promoter })))); })));
 };
 var WhenNoPromoters = function (props) { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        React.createElement(Button, { onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
+        React.createElement(Button, { "data-testid": "create-first-promoter-btn", onClick: function () { return props.onNewPromoter(); } }, "Create first promoter")))); };
 var ManagePromoterList = function (props) {
-    return (React.createElement(EnumState, { e: props.promoters, onEmpty: function () { return React.createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenPromotersExist, __assign({}, props)); } }));
+    return (React.createElement("div", { "data-testid": "manage-promoter-list" },
+        React.createElement(EnumState, { e: props.promoters, onEmpty: function () { return React.createElement(WhenNoPromoters, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenPromotersExist, __assign({}, props)); } })));
 };
 
 var WhenActivitiesExist = function (props) {
@@ -1609,7 +1608,8 @@ var WhenNoActivities = function (props) { return (React.createElement(GridContai
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         React.createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
 var ManageActivityList = function (props) {
-    return (React.createElement(EnumState, { e: props.activities, onEmpty: function () { return React.createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivitiesExist, __assign({}, props)); } }));
+    return (React.createElement("div", { "data-testid": "manage-activity-list" },
+        React.createElement(EnumState, { e: props.activities, onEmpty: function () { return React.createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivitiesExist, __assign({}, props)); } })));
 };
 
 var WhenActivityDateExists = function (props) {
@@ -1625,7 +1625,8 @@ var WhenNoActivityDates = function (props) { return (React.createElement(GridCon
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         React.createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
 var ManageActivityDateList = function (props) {
-    return (React.createElement(EnumState, { e: props.activityDates, onEmpty: function () { return React.createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivityDateExists, __assign({}, props)); } }));
+    return (React.createElement("div", { "data-testid": "manage-activity-date-list" },
+        React.createElement(EnumState, { e: props.activityDates, onEmpty: function () { return React.createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivityDateExists, __assign({}, props)); } })));
 };
 
 var WhenTicketsExist = function (props) {
@@ -1770,13 +1771,14 @@ var NoTickets = function () { return (React.createElement(GridContainer, { gap: 
         React.createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
     var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
-    return (React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } }));
+    return (React.createElement("div", { "data-testid": "ticket-collection" },
+        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
 var BasketSummary = function (_a) {
     var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
     var basketItemsList = Object.values(basketItems);
-    return (React.createElement(GridContainer, { gap: 1 }, basketItemsList.map(function (seat) { return (React.createElement(React.Fragment, null,
+    return (React.createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" }, basketItemsList.map(function (seat) { return (React.createElement(React.Fragment, null,
         React.createElement(GridItem, { xs: "1/7" },
             React.createElement(P, null, seat.title),
             React.createElement(P, { sm: true }, seat.amount)),

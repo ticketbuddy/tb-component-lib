@@ -8,17 +8,15 @@ interface TicketCardProps {
 }
 
 export const BuyTicketCard = ({ticket, onAddToBasket}: TicketCardProps) => (
-  <Surface shadow={10}>
-    <Surface padding={1}>
-      <GridContainer gap={1}>
-        <GridItem xs="1/6">
-          <H3>{ticket.title}</H3>
-          <P muted>{ticket.amount}</P>
-        </GridItem>
-        <GridItem vertialAlign="center" horizontalAlign="end" xs="6/13">
-          <Button onClick={() => onAddToBasket(ticket.product_id)} sm secondary>+ 1</Button>
-        </GridItem>
-      </GridContainer>
-      </Surface>
+  <Surface padding={1} shadow={10} data-testid="buy-ticket-card">
+    <GridContainer gap={1}>
+      <GridItem xs="1/6">
+        <H3>{ticket.title}</H3>
+        <P muted>{ticket.amount}</P>
+      </GridItem>
+      <GridItem vertialAlign="center" horizontalAlign="end" xs="6/13">
+        <Button onClick={() => onAddToBasket(ticket.product_id)} sm secondary>+ 1</Button>
+      </GridItem>
+    </GridContainer>
   </Surface>
 )

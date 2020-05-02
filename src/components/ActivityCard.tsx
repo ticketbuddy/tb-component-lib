@@ -10,15 +10,15 @@ export const ActivityCard = ({activity: activity}: ActivityCardProps) => {
   const alternativeActivityLogo = "/alternativeActivityLogo.png"
 
   return (
-    <Surface shadow={10}>
+    <Surface shadow={10} data-testid="activity-card">
       <Image height="200px" src={activity.logo || alternativeActivityLogo} />
       <Surface padding={1}>
         <H2>{activity.title}</H2>
         <Link to={`/dashboard/event/${activity.activity_id}/dates`}>
-          <Button>Manage Dates</Button>
+          <Button data-testid="manage-dates-btn">Manage Dates</Button>
         </Link>
         <Link to={`/dashboard/event/${activity.activity_id}/edit`}>
-          <Button>Edit</Button>
+          <Button data-testid="edit-activity-btn">Edit</Button>
         </Link>
       </Surface>
     </Surface>

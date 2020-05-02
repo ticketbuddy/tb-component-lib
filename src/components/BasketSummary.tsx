@@ -14,7 +14,7 @@ export const BasketSummary = ({basketItems, onUnreserve}: BasketSummaryProps) =>
   const basketItemsList = Object.values(basketItems)
 
   return (
-    <GridContainer gap={1}>
+    <GridContainer gap={1} data-testid="basket-summary">
       {basketItemsList.map((seat: Seat) => (
         <>
           <GridItem xs="1/7">

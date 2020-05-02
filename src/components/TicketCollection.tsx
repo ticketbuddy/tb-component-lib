@@ -31,5 +31,7 @@ const NoTickets = () => (
 )
 
 export const TicketCollection = ({tickets, onAddToBasket}: TicketCollectionProps) => (
-  <EnumState e={tickets} onEmpty={() => <NoTickets />} onPopulated={() => <ShowTickets onAddToBasket={onAddToBasket} tickets={tickets} />} />
+  <div data-testid="ticket-collection">
+    <EnumState e={tickets} onEmpty={() => <NoTickets />} onPopulated={() => <ShowTickets onAddToBasket={onAddToBasket} tickets={tickets} />} />
+  </div>
 )

@@ -14,7 +14,7 @@ const HeaderWrapper = styled.header`
 
 
 export const Header = (props: HeaderProps) => (
-  <HeaderWrapper>
+  <HeaderWrapper data-testid="header">
     <GridContainer>
       <GridItem xs="3/6">
         logo

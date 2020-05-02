@@ -39,10 +39,12 @@ const WhenNoActivities = (props: ManageActivityListProps) => (
 
 export const ManageActivityList = (props: ManageActivityListProps) => {
   return (
-    <EnumState
-      e={props.activities}
-      onEmpty={() => <WhenNoActivities {...props} />}
-      onPopulated={() => <WhenActivitiesExist {...props} />}
-    />
+    <div data-testid="manage-activity-list">
+      <EnumState
+        e={props.activities}
+        onEmpty={() => <WhenNoActivities {...props} />}
+        onPopulated={() => <WhenActivitiesExist {...props} />}
+      />
+    </div>
   )
 }
