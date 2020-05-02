@@ -1766,6 +1766,17 @@ var TicketCollection = function (_a) {
     return (createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } }));
 };
 
+var BasketSummary = function (_a) {
+    var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
+    var basketItemsList = Object.values(basketItems);
+    return (createElement(GridContainer, { gap: 1 }, basketItemsList.map(function (seat) { return (createElement(Fragment, null,
+        createElement(GridItem, { xs: "1/7" },
+            createElement(P, null, seat.title),
+            createElement(P, { sm: true }, seat.amount)),
+        createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "7/13" },
+            createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(seat.item_id); } }, "Unreserve")))); })));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1785,5 +1796,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
 //# sourceMappingURL=index.es.js.map

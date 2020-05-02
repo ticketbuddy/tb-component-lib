@@ -1773,6 +1773,17 @@ var TicketCollection = function (_a) {
     return (React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } }));
 };
 
+var BasketSummary = function (_a) {
+    var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
+    var basketItemsList = Object.values(basketItems);
+    return (React.createElement(GridContainer, { gap: 1 }, basketItemsList.map(function (seat) { return (React.createElement(React.Fragment, null,
+        React.createElement(GridItem, { xs: "1/7" },
+            React.createElement(P, null, seat.title),
+            React.createElement(P, { sm: true }, seat.amount)),
+        React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "7/13" },
+            React.createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(seat.item_id); } }, "Unreserve")))); })));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1796,6 +1807,7 @@ exports.ActivityCard = ActivityCard;
 exports.ActivityDateCard = ActivityDateCard;
 exports.ActivityDateForm = ActivityDateForm;
 exports.ActivityDescriptionForm = ActivityDescriptionForm;
+exports.BasketSummary = BasketSummary;
 exports.Button = Button;
 exports.BuyTicketCard = BuyTicketCard;
 exports.EnumState = EnumState;
