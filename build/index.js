@@ -1599,14 +1599,14 @@ var WhenActivitiesExist = function (props) {
     var activities = Object.values(props.activities);
     return (React.createElement(GridContainer, { gap: 1 },
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            React.createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "New activity")),
+            React.createElement(Button, { "data-testid": "create-activity-btn", onClick: function () { return props.onNewActivity(); } }, "New activity")),
         activities.map(function (activity) { return (React.createElement(GridItem, { xs: "1/13" },
             React.createElement(Surface, null,
                 React.createElement(ActivityCard, { activity: activity })))); })));
 };
 var WhenNoActivities = function (props) { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        React.createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
+        React.createElement(Button, { "data-testid": "create-first-activity-btn", onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
 var ManageActivityList = function (props) {
     return (React.createElement("div", { "data-testid": "manage-activity-list" },
         React.createElement(EnumState, { e: props.activities, onEmpty: function () { return React.createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivitiesExist, __assign({}, props)); } })));
@@ -1616,14 +1616,14 @@ var WhenActivityDateExists = function (props) {
     var activityDates = Object.values(props.activityDates);
     return (React.createElement(GridContainer, { gap: 1 },
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            React.createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "New date")),
+            React.createElement(Button, { "data-testid": "create-activity-date-btn", onClick: function () { return props.onNewActivityDate(); } }, "New date")),
         activityDates.map(function (activityDate) { return (React.createElement(GridItem, { xs: "1/13" },
             React.createElement(Surface, null,
                 React.createElement(ActivityDateCard, { activityDate: activityDate })))); })));
 };
 var WhenNoActivityDates = function (props) { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        React.createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
+        React.createElement(Button, { "data-testid": "create-first-activity-date-btn", onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
 var ManageActivityDateList = function (props) {
     return (React.createElement("div", { "data-testid": "manage-activity-date-list" },
         React.createElement(EnumState, { e: props.activityDates, onEmpty: function () { return React.createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenActivityDateExists, __assign({}, props)); } })));
@@ -1633,14 +1633,14 @@ var WhenTicketsExist = function (props) {
     var tickets = Object.values(props.tickets);
     return (React.createElement(GridContainer, { gap: 1 },
         React.createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            React.createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "New ticket")),
+            React.createElement(Button, { "data-testid": "create-ticket-btn", onClick: function () { return props.onNewTicket(); } }, "New ticket")),
         tickets.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
             React.createElement(Surface, null,
                 React.createElement(TicketCard, { ticket: ticket })))); })));
 };
 var WhenNoTickets = function (props) { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        React.createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "Create first ticket")))); };
+        React.createElement(Button, { "data-testid": "create-first-ticket-btn", onClick: function () { return props.onNewTicket(); } }, "Create first ticket")))); };
 var ManageTicketList = function (props) {
     return (React.createElement(EnumState, { e: props.tickets, onEmpty: function () { return React.createElement(WhenNoTickets, __assign({}, props)); }, onPopulated: function () { return React.createElement(WhenTicketsExist, __assign({}, props)); } }));
 };

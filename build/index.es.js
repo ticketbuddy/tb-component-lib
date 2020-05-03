@@ -1592,14 +1592,14 @@ var WhenActivitiesExist = function (props) {
     var activities = Object.values(props.activities);
     return (createElement(GridContainer, { gap: 1 },
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "New activity")),
+            createElement(Button, { "data-testid": "create-activity-btn", onClick: function () { return props.onNewActivity(); } }, "New activity")),
         activities.map(function (activity) { return (createElement(GridItem, { xs: "1/13" },
             createElement(Surface, null,
                 createElement(ActivityCard, { activity: activity })))); })));
 };
 var WhenNoActivities = function (props) { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        createElement(Button, { onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
+        createElement(Button, { "data-testid": "create-first-activity-btn", onClick: function () { return props.onNewActivity(); } }, "Create first event")))); };
 var ManageActivityList = function (props) {
     return (createElement("div", { "data-testid": "manage-activity-list" },
         createElement(EnumState, { e: props.activities, onEmpty: function () { return createElement(WhenNoActivities, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivitiesExist, __assign({}, props)); } })));
@@ -1609,14 +1609,14 @@ var WhenActivityDateExists = function (props) {
     var activityDates = Object.values(props.activityDates);
     return (createElement(GridContainer, { gap: 1 },
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "New date")),
+            createElement(Button, { "data-testid": "create-activity-date-btn", onClick: function () { return props.onNewActivityDate(); } }, "New date")),
         activityDates.map(function (activityDate) { return (createElement(GridItem, { xs: "1/13" },
             createElement(Surface, null,
                 createElement(ActivityDateCard, { activityDate: activityDate })))); })));
 };
 var WhenNoActivityDates = function (props) { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        createElement(Button, { onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
+        createElement(Button, { "data-testid": "create-first-activity-date-btn", onClick: function () { return props.onNewActivityDate(); } }, "Create first date")))); };
 var ManageActivityDateList = function (props) {
     return (createElement("div", { "data-testid": "manage-activity-date-list" },
         createElement(EnumState, { e: props.activityDates, onEmpty: function () { return createElement(WhenNoActivityDates, __assign({}, props)); }, onPopulated: function () { return createElement(WhenActivityDateExists, __assign({}, props)); } })));
@@ -1626,14 +1626,14 @@ var WhenTicketsExist = function (props) {
     var tickets = Object.values(props.tickets);
     return (createElement(GridContainer, { gap: 1 },
         createElement(GridItem, { xs: "1/13", horizontalAlign: "end" },
-            createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "New ticket")),
+            createElement(Button, { "data-testid": "create-ticket-btn", onClick: function () { return props.onNewTicket(); } }, "New ticket")),
         tickets.map(function (ticket) { return (createElement(GridItem, { xs: "1/13" },
             createElement(Surface, null,
                 createElement(TicketCard, { ticket: ticket })))); })));
 };
 var WhenNoTickets = function (props) { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
-        createElement(Button, { onClick: function () { return props.onNewTicket(); } }, "Create first ticket")))); };
+        createElement(Button, { "data-testid": "create-first-ticket-btn", onClick: function () { return props.onNewTicket(); } }, "Create first ticket")))); };
 var ManageTicketList = function (props) {
     return (createElement(EnumState, { e: props.tickets, onEmpty: function () { return createElement(WhenNoTickets, __assign({}, props)); }, onPopulated: function () { return createElement(WhenTicketsExist, __assign({}, props)); } }));
 };

@@ -16,7 +16,7 @@ const WhenTicketsExist = (props: ManageTicketListProps) => {
   return (
     <GridContainer gap={1}>
       <GridItem xs="1/13" horizontalAlign="end">
-        <Button onClick={() => props.onNewTicket()}>New ticket</Button>
+        <Button data-testid="create-ticket-btn" onClick={() => props.onNewTicket()}>New ticket</Button>
       </GridItem>
       {tickets.map((ticket: Ticket) => (
         <GridItem xs="1/13">
@@ -32,7 +32,7 @@ const WhenTicketsExist = (props: ManageTicketListProps) => {
 const WhenNoTickets = (props: ManageTicketListProps) => (
   <GridContainer gap={1}>
     <GridItem xs="1/13" horizontalAlign="center">
-      <Button onClick={() => props.onNewTicket()}>Create first ticket</Button>
+      <Button data-testid="create-first-ticket-btn" onClick={() => props.onNewTicket()}>Create first ticket</Button>
     </GridItem>
   </GridContainer>
 )

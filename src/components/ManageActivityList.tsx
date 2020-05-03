@@ -16,7 +16,7 @@ const WhenActivitiesExist = (props: ManageActivityListProps) => {
   return (
     <GridContainer gap={1}>
       <GridItem xs="1/13" horizontalAlign="end">
-        <Button onClick={() => props.onNewActivity()}>New activity</Button>
+        <Button data-testid="create-activity-btn" onClick={() => props.onNewActivity()}>New activity</Button>
       </GridItem>
       {activities.map((activity: Activity) => (
         <GridItem xs="1/13">
@@ -32,7 +32,7 @@ const WhenActivitiesExist = (props: ManageActivityListProps) => {
 const WhenNoActivities = (props: ManageActivityListProps) => (
   <GridContainer gap={1}>
     <GridItem xs="1/13" horizontalAlign="center">
-      <Button onClick={() => props.onNewActivity()}>Create first event</Button>
+      <Button data-testid="create-first-activity-btn" onClick={() => props.onNewActivity()}>Create first event</Button>
     </GridItem>
   </GridContainer>
 )

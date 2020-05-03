@@ -16,7 +16,7 @@ const WhenActivityDateExists = (props: ManageActivityDateListProps) => {
   return (
     <GridContainer gap={1}>
       <GridItem xs="1/13" horizontalAlign="end">
-        <Button onClick={() => props.onNewActivityDate()}>New date</Button>
+        <Button data-testid="create-activity-date-btn" onClick={() => props.onNewActivityDate()}>New date</Button>
       </GridItem>
       {activityDates.map((activityDate: ActivityDate) => (
         <GridItem xs="1/13">
@@ -32,7 +32,7 @@ const WhenActivityDateExists = (props: ManageActivityDateListProps) => {
 const WhenNoActivityDates = (props: ManageActivityDateListProps) => (
   <GridContainer gap={1}>
     <GridItem xs="1/13" horizontalAlign="center">
-      <Button onClick={() => props.onNewActivityDate()}>Create first date</Button>
+      <Button data-testid="create-first-activity-date-btn" onClick={() => props.onNewActivityDate()}>Create first date</Button>
     </GridItem>
   </GridContainer>
 )
