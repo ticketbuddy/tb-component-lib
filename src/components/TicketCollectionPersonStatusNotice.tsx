@@ -22,7 +22,7 @@ const AnonymousNotice = () => (
 const AnonymousWithSessionNotice = () => (
   <GridContainer>
     <GridItem xs="1/6" vertialAlign="center">
-      <P>Please verify your email</P>
+      <P>Please set, or verify your email</P>
     </GridItem>
     <GridItem xs="6/13" horizontalAlign="end" vertialAlign="center">
       <Link to="/sign-in">

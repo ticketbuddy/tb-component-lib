@@ -1783,7 +1783,7 @@ var AnonymousNotice = function () { return (React.createElement(GridContainer, n
             React.createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
 var AnonymousWithSessionNotice = function () { return (React.createElement(GridContainer, null,
     React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        React.createElement(P, null, "Please verify your email")),
+        React.createElement(P, null, "Please set, or verify your email")),
     React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
         React.createElement(reactRouterDom.Link, { to: "/sign-in" },
             React.createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };

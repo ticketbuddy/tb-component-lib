@@ -1776,7 +1776,7 @@ var AnonymousNotice = function () { return (createElement(GridContainer, null,
             createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
 var AnonymousWithSessionNotice = function () { return (createElement(GridContainer, null,
     createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        createElement(P, null, "Please verify your email")),
+        createElement(P, null, "Please set, or verify your email")),
     createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
         createElement(Link, { to: "/sign-in" },
             createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };
