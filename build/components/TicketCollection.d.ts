@@ -1,10 +1,11 @@
 /// <reference types="react" />
-import { OnAddToBasket, Ticket } from "../";
+import { Person, OnAddToBasket, Ticket } from "../";
 interface TicketCollectionProps {
     tickets: {
         [ticketId: string]: Ticket;
     };
     onAddToBasket: OnAddToBasket;
+    person: Person;
 }
-export declare const TicketCollection: ({ tickets, onAddToBasket }: TicketCollectionProps) => JSX.Element;
+export declare const TicketCollection: ({ tickets, onAddToBasket, person }: TicketCollectionProps) => JSX.Element;
 export {};

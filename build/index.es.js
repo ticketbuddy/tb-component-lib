@@ -1547,14 +1547,14 @@ var ActivityDateCard = function (_a) {
 };
 
 var BuyTicketCard = function (_a) {
-    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
+    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket, person = _a.person;
     return (createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
         createElement(GridContainer, { gap: 1 },
             createElement(GridItem, { xs: "1/6" },
                 createElement(H3, null, ticket.title),
                 createElement(P, { muted: true }, ticket.amount)),
             createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
+                createElement(PersonState, { p: person, onAnonymous: function () { return null; }, onAnonymousWithSession: function () { return null; }, onVerified: function () { return createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"); } })))));
 };
 
 var EnumState = function (_a) {
@@ -1754,18 +1754,18 @@ var TicketForm = function (props) {
 };
 
 var ShowTickets = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
     var ticketList = Object.values(tickets);
     return (createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (createElement(GridItem, { xs: "1/13" },
-        createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
+        createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket, person: person }))); })));
 };
 var NoTickets = function () { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
     return (createElement("div", { "data-testid": "ticket-collection" },
-        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
+        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { person: person, onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
 var BasketSummary = function (_a) {
