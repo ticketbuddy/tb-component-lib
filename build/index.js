@@ -1775,6 +1775,24 @@ var TicketCollection = function (_a) {
         React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { person: person, onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
+var AnonymousNotice = function () { return (React.createElement(GridContainer, null,
+    React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
+        React.createElement(P, null, "Sign in to reserve seats")),
+    React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
+        React.createElement(reactRouterDom.Link, { to: "/sign-in" },
+            React.createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
+var AnonymousWithSessionNotice = function () { return (React.createElement(GridContainer, null,
+    React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
+        React.createElement(P, null, "Please verify your email")),
+    React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
+        React.createElement(reactRouterDom.Link, { to: "/sign-in" },
+            React.createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };
+var TicketCollectionPersonStatusNotice = function (_a) {
+    var person = _a.person;
+    return (React.createElement("div", { "data-testid": "ticket-collection-user-status-notice" },
+        React.createElement(PersonState, { p: person, onAnonymous: function () { return React.createElement(AnonymousNotice, null); }, onAnonymousWithSession: function () { return React.createElement(AnonymousWithSessionNotice, null); }, onVerified: function () { return null; } })));
+};
+
 var BasketSummary = function (_a) {
     var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
     var basketItemsList = Object.values(basketItems);
@@ -1839,6 +1857,7 @@ exports.Surface = Surface;
 exports.TextArea = TextArea;
 exports.TicketCard = TicketCard;
 exports.TicketCollection = TicketCollection;
+exports.TicketCollectionPersonStatusNotice = TicketCollectionPersonStatusNotice;
 exports.TicketForm = TicketForm;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map

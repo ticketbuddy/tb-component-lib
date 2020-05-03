@@ -1768,6 +1768,24 @@ var TicketCollection = function (_a) {
         createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { person: person, onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
+var AnonymousNotice = function () { return (createElement(GridContainer, null,
+    createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
+        createElement(P, null, "Sign in to reserve seats")),
+    createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
+        createElement(Link, { to: "/sign-in" },
+            createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
+var AnonymousWithSessionNotice = function () { return (createElement(GridContainer, null,
+    createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
+        createElement(P, null, "Please verify your email")),
+    createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
+        createElement(Link, { to: "/sign-in" },
+            createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };
+var TicketCollectionPersonStatusNotice = function (_a) {
+    var person = _a.person;
+    return (createElement("div", { "data-testid": "ticket-collection-user-status-notice" },
+        createElement(PersonState, { p: person, onAnonymous: function () { return createElement(AnonymousNotice, null); }, onAnonymousWithSession: function () { return createElement(AnonymousWithSessionNotice, null); }, onVerified: function () { return null; } })));
+};
+
 var BasketSummary = function (_a) {
     var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
     var basketItemsList = Object.values(basketItems);
@@ -1798,5 +1816,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketCollectionPersonStatusNotice, TicketForm, lightTheme };
 //# sourceMappingURL=index.es.js.map
