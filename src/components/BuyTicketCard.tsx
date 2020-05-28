@@ -1,14 +1,13 @@
 import * as React from "react"
-import {Ticket, H3, P, Person, PersonState, GridContainer, GridItem, Surface, Button} from "../";
+import {Ticket, H3, P, GridContainer, GridItem, Surface, Button} from "../";
 
 export type OnAddToBasket = (productId: string) => void
 interface TicketCardProps {
   ticket: Ticket;
-  onAddToBasket: OnAddToBasket,
-  person: Person
+  onAddToBasket: OnAddToBasket;
 }
 
-export const BuyTicketCard = ({ticket, onAddToBasket, person}: TicketCardProps) => (
+export const BuyTicketCard = ({ticket, onAddToBasket}: TicketCardProps) => (
   <Surface padding={1} shadow={10} data-testid="buy-ticket-card">
     <GridContainer gap={1}>
       <GridItem xs="1/6">
@@ -16,12 +15,7 @@ export const BuyTicketCard = ({ticket, onAddToBasket, person}: TicketCardProps) 
         <P muted>{ticket.amount}</P>
       </GridItem>
       <GridItem vertialAlign="center" horizontalAlign="end" xs="6/13">
-      <PersonState
-          p={person}
-          onAnonymous={() => null}
-          onAnonymousWithSession={() => null}
-          onVerified={() => <Button onClick={() => onAddToBasket(ticket.product_id)} sm secondary>+ 1</Button>}
-        />
+      <Button onClick={() => onAddToBasket(ticket.product_id)} sm secondary>+ 1</Button>
       </GridItem>
     </GridContainer>
   </Surface>

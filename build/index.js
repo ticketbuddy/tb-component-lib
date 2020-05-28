@@ -1554,14 +1554,14 @@ var ActivityDateCard = function (_a) {
 };
 
 var BuyTicketCard = function (_a) {
-    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
     return (React.createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
         React.createElement(GridContainer, { gap: 1 },
             React.createElement(GridItem, { xs: "1/6" },
                 React.createElement(H3, null, ticket.title),
                 React.createElement(P, { muted: true }, ticket.amount)),
             React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                React.createElement(PersonState, { p: person, onAnonymous: function () { return null; }, onAnonymousWithSession: function () { return null; }, onVerified: function () { return React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"); } })))));
+                React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
 };
 
 var EnumState = function (_a) {
@@ -1761,18 +1761,18 @@ var TicketForm = function (props) {
 };
 
 var ShowTickets = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
     var ticketList = Object.values(tickets);
     return (React.createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
-        React.createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket, person: person }))); })));
+        React.createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
 };
 var NoTickets = function () { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         React.createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
     return (React.createElement("div", { "data-testid": "ticket-collection" },
-        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { person: person, onAddToBasket: onAddToBasket, tickets: tickets }); } })));
+        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
 var AnonymousNotice = function () { return (React.createElement(GridContainer, null,
