@@ -1775,33 +1775,23 @@ var TicketCollection = function (_a) {
         React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
-var AnonymousNotice = function () { return (React.createElement(GridContainer, null,
-    React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        React.createElement(P, null, "Sign in to reserve seats")),
-    React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
-        React.createElement(reactRouterDom.Link, { to: "/sign-in" },
-            React.createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
-var AnonymousWithSessionNotice = function () { return (React.createElement(GridContainer, null,
-    React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        React.createElement(P, null, "Please set, or verify your email")),
-    React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
-        React.createElement(reactRouterDom.Link, { to: "/sign-in" },
-            React.createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };
-var TicketCollectionPersonStatusNotice = function (_a) {
-    var person = _a.person;
-    return (React.createElement("div", { "data-testid": "ticket-collection-user-status-notice" },
-        React.createElement(PersonState, { p: person, onAnonymous: function () { return React.createElement(AnonymousNotice, null); }, onAnonymousWithSession: function () { return React.createElement(AnonymousWithSessionNotice, null); }, onVerified: function () { return null; } })));
-};
-
-var BasketSummary = function (_a) {
-    var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
-    var basketItemsList = Object.values(basketItems);
-    return (React.createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" }, basketItemsList.map(function (seat) { return (React.createElement(React.Fragment, null,
+var ReservedItems = function (_a) {
+    var items = _a.items, onUnreserve = _a.onUnreserve;
+    return (React.createElement(React.Fragment, null, items.map(function (item) { return (React.createElement(React.Fragment, null,
         React.createElement(GridItem, { xs: "1/7" },
-            React.createElement(P, null, seat.title),
-            React.createElement(P, { sm: true }, seat.amount)),
+            React.createElement(P, null, item.product.title),
+            React.createElement(P, { sm: true }, item.product.amount)),
         React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "7/13" },
-            React.createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(seat.item_id); } }, "Unreserve")))); })));
+            React.createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(item.item_id); } }, "Unreserve")))); })));
+};
+var BasketSummary = function (_a) {
+    var basket = _a.basket, onUnreserve = _a.onUnreserve;
+    return (React.createElement(React.Fragment, null,
+        React.createElement(H3, null,
+            "Basket ",
+            basket.status),
+        React.createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" },
+            React.createElement(ReservedItems, { items: basket.items, onUnreserve: onUnreserve }))));
 };
 
 var lightTheme = {
@@ -1857,7 +1847,6 @@ exports.Surface = Surface;
 exports.TextArea = TextArea;
 exports.TicketCard = TicketCard;
 exports.TicketCollection = TicketCollection;
-exports.TicketCollectionPersonStatusNotice = TicketCollectionPersonStatusNotice;
 exports.TicketForm = TicketForm;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map

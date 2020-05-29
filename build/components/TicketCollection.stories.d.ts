@@ -4,4 +4,4 @@ declare const _default: {
 };
 export default _default;
 export declare const noTickets: () => JSX.Element;
-export declare const hasTicketsAnonymous: () => JSX.Element;
+export declare const hasTickets: () => JSX.Element;
