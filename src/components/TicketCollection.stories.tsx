@@ -28,7 +28,7 @@ export const noTickets = () => (
   </ThemeProvider>
 )
 
-export const hasTicketsAnonymous = () => (
+export const hasTickets = () => (
   <ThemeProvider theme={lightTheme}>
     <TicketCollection tickets={tickets} onAddToBasket={onAddToBasket} />
   </ThemeProvider>
