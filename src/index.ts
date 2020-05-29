@@ -34,6 +34,7 @@ export * from "./components/activity"
 export * from "./components/activityDate"
 export * from "./components/ticket"
 export * from "./components/seat"
+export * from "./components/basket"
 
 // themes
 export * from "./theme"
