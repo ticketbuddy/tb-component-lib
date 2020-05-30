@@ -1547,14 +1547,14 @@ var ActivityDateCard = function (_a) {
 };
 
 var BuyTicketCard = function (_a) {
-    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
     return (createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
         createElement(GridContainer, { gap: 1 },
             createElement(GridItem, { xs: "1/6" },
                 createElement(H3, null, ticket.title),
                 createElement(P, { muted: true }, ticket.amount)),
             createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                createElement(PersonState, { p: person, onAnonymous: function () { return null; }, onAnonymousWithSession: function () { return null; }, onVerified: function () { return createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"); } })))));
+                createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
 };
 
 var EnumState = function (_a) {
@@ -1754,47 +1754,37 @@ var TicketForm = function (props) {
 };
 
 var ShowTickets = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
     var ticketList = Object.values(tickets);
     return (createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (createElement(GridItem, { xs: "1/13" },
-        createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket, person: person }))); })));
+        createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
 };
 var NoTickets = function () { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
     return (createElement("div", { "data-testid": "ticket-collection" },
-        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { person: person, onAddToBasket: onAddToBasket, tickets: tickets }); } })));
+        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
-var AnonymousNotice = function () { return (createElement(GridContainer, null,
-    createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        createElement(P, null, "Sign in to reserve seats")),
-    createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
-        createElement(Link, { to: "/sign-in" },
-            createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
-var AnonymousWithSessionNotice = function () { return (createElement(GridContainer, null,
-    createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        createElement(P, null, "Please set, or verify your email")),
-    createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
-        createElement(Link, { to: "/sign-in" },
-            createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };
-var TicketCollectionPersonStatusNotice = function (_a) {
-    var person = _a.person;
-    return (createElement("div", { "data-testid": "ticket-collection-user-status-notice" },
-        createElement(PersonState, { p: person, onAnonymous: function () { return createElement(AnonymousNotice, null); }, onAnonymousWithSession: function () { return createElement(AnonymousWithSessionNotice, null); }, onVerified: function () { return null; } })));
-};
-
-var BasketSummary = function (_a) {
-    var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
-    var basketItemsList = Object.values(basketItems);
-    return (createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" }, basketItemsList.map(function (seat) { return (createElement(Fragment, null,
+var ReservedItems = function (_a) {
+    var items = _a.items, onUnreserve = _a.onUnreserve;
+    return (createElement(Fragment, null, items.map(function (item) { return (createElement(Fragment, null,
         createElement(GridItem, { xs: "1/7" },
-            createElement(P, null, seat.title),
-            createElement(P, { sm: true }, seat.amount)),
+            createElement(P, null, item.product.title),
+            createElement(P, { sm: true }, item.product.amount)),
         createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "7/13" },
-            createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(seat.item_id); } }, "Unreserve")))); })));
+            createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(item.item_id); } }, "Unreserve")))); })));
+};
+var BasketSummary = function (_a) {
+    var basket = _a.basket, onUnreserve = _a.onUnreserve;
+    return (createElement(Fragment, null,
+        createElement(H3, null,
+            "Basket ",
+            basket.status),
+        createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" },
+            createElement(ReservedItems, { items: basket.items, onUnreserve: onUnreserve }))));
 };
 
 var lightTheme = {
@@ -1816,5 +1806,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketCollectionPersonStatusNotice, TicketForm, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
 //# sourceMappingURL=index.es.js.map

@@ -24,7 +24,6 @@ export * from "./components/ActivityDescriptionForm"
 export * from "./components/ActivityDateForm"
 export * from "./components/TicketForm"
 export * from "./components/TicketCollection"
-export * from "./components/TicketCollectionPersonStatusNotice"
 export * from "./components/BasketSummary"
 
 // types
@@ -34,6 +33,7 @@ export * from "./components/activity"
 export * from "./components/activityDate"
 export * from "./components/ticket"
 export * from "./components/seat"
+export * from "./components/basket"
 
 // themes
 export * from "./theme"

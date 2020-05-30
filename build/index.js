@@ -1554,14 +1554,14 @@ var ActivityDateCard = function (_a) {
 };
 
 var BuyTicketCard = function (_a) {
-    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
     return (React.createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
         React.createElement(GridContainer, { gap: 1 },
             React.createElement(GridItem, { xs: "1/6" },
                 React.createElement(H3, null, ticket.title),
                 React.createElement(P, { muted: true }, ticket.amount)),
             React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                React.createElement(PersonState, { p: person, onAnonymous: function () { return null; }, onAnonymousWithSession: function () { return null; }, onVerified: function () { return React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1"); } })))));
+                React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
 };
 
 var EnumState = function (_a) {
@@ -1761,47 +1761,37 @@ var TicketForm = function (props) {
 };
 
 var ShowTickets = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
     var ticketList = Object.values(tickets);
     return (React.createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
-        React.createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket, person: person }))); })));
+        React.createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
 };
 var NoTickets = function () { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         React.createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket, person = _a.person;
+    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
     return (React.createElement("div", { "data-testid": "ticket-collection" },
-        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { person: person, onAddToBasket: onAddToBasket, tickets: tickets }); } })));
+        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
 };
 
-var AnonymousNotice = function () { return (React.createElement(GridContainer, null,
-    React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        React.createElement(P, null, "Sign in to reserve seats")),
-    React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
-        React.createElement(reactRouterDom.Link, { to: "/sign-in" },
-            React.createElement(Button, { sm: true, secondary: true }, "Sign in"))))); };
-var AnonymousWithSessionNotice = function () { return (React.createElement(GridContainer, null,
-    React.createElement(GridItem, { xs: "1/6", vertialAlign: "center" },
-        React.createElement(P, null, "Please set, or verify your email")),
-    React.createElement(GridItem, { xs: "6/13", horizontalAlign: "end", vertialAlign: "center" },
-        React.createElement(reactRouterDom.Link, { to: "/sign-in" },
-            React.createElement(Button, { sm: true, secondary: true }, "Verify email (or set email....)"))))); };
-var TicketCollectionPersonStatusNotice = function (_a) {
-    var person = _a.person;
-    return (React.createElement("div", { "data-testid": "ticket-collection-user-status-notice" },
-        React.createElement(PersonState, { p: person, onAnonymous: function () { return React.createElement(AnonymousNotice, null); }, onAnonymousWithSession: function () { return React.createElement(AnonymousWithSessionNotice, null); }, onVerified: function () { return null; } })));
-};
-
-var BasketSummary = function (_a) {
-    var basketItems = _a.basketItems, onUnreserve = _a.onUnreserve;
-    var basketItemsList = Object.values(basketItems);
-    return (React.createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" }, basketItemsList.map(function (seat) { return (React.createElement(React.Fragment, null,
+var ReservedItems = function (_a) {
+    var items = _a.items, onUnreserve = _a.onUnreserve;
+    return (React.createElement(React.Fragment, null, items.map(function (item) { return (React.createElement(React.Fragment, null,
         React.createElement(GridItem, { xs: "1/7" },
-            React.createElement(P, null, seat.title),
-            React.createElement(P, { sm: true }, seat.amount)),
+            React.createElement(P, null, item.product.title),
+            React.createElement(P, { sm: true }, item.product.amount)),
         React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "7/13" },
-            React.createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(seat.item_id); } }, "Unreserve")))); })));
+            React.createElement(Button, { sm: true, secondary: true, onClick: function () { return onUnreserve(item.item_id); } }, "Unreserve")))); })));
+};
+var BasketSummary = function (_a) {
+    var basket = _a.basket, onUnreserve = _a.onUnreserve;
+    return (React.createElement(React.Fragment, null,
+        React.createElement(H3, null,
+            "Basket ",
+            basket.status),
+        React.createElement(GridContainer, { gap: 1, "data-testid": "basket-summary" },
+            React.createElement(ReservedItems, { items: basket.items, onUnreserve: onUnreserve }))));
 };
 
 var lightTheme = {
@@ -1857,7 +1847,6 @@ exports.Surface = Surface;
 exports.TextArea = TextArea;
 exports.TicketCard = TicketCard;
 exports.TicketCollection = TicketCollection;
-exports.TicketCollectionPersonStatusNotice = TicketCollectionPersonStatusNotice;
 exports.TicketForm = TicketForm;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map
