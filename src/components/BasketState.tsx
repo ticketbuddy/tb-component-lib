@@ -2,9 +2,10 @@ import {Basket} from "../"
 
 export const BasketState = ({
   b,
-  onAnonymous,
-  onAnonymousWithSession,
-  onVerified
+  onPending,
+  onCompleted,
+  onReserved,
+  onClosed
 }: {
   b: Basket,
   onPending: () => any;
