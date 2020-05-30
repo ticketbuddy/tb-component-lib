@@ -1,5 +1,5 @@
 import { Basket } from "../";
-export declare const BasketState: ({ b, onAnonymous, onAnonymousWithSession, onVerified }: {
+export declare const BasketState: ({ b, onPending, onCompleted, onReserved, onClosed }: {
     b: Basket;
     onPending: () => any;
     onCompleted: () => any;
