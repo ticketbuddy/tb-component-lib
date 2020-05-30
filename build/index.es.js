@@ -1546,17 +1546,6 @@ var ActivityDateCard = function (_a) {
                 createElement(Button, { "data-testid": "manage-activity-date-tickets-btn" }, "Tickets")))));
 };
 
-var BuyTicketCard = function (_a) {
-    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
-    return (createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
-        createElement(GridContainer, { gap: 1 },
-            createElement(GridItem, { xs: "1/6" },
-                createElement(H3, null, ticket.title),
-                createElement(P, { muted: true }, ticket.amount)),
-            createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
-};
-
 var EnumState = function (_a) {
     var e = _a.e, onEmpty = _a.onEmpty, onPopulated = _a.onPopulated;
     if (Object.keys(e).length === 0)
@@ -1754,18 +1743,29 @@ var TicketForm = function (props) {
 };
 
 var ShowTickets = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var tickets = _a.tickets;
     var ticketList = Object.values(tickets);
-    return (createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (createElement(GridItem, { xs: "1/13" },
-        createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
+    return (createElement("form", { method: "POST", action: "/api/basket" },
+        createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (createElement(GridItem, { xs: "1/13" },
+            createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
+                createElement(GridContainer, { gap: 1 },
+                    createElement(GridItem, { xs: "1/6" },
+                        createElement(H3, null, ticket.title),
+                        createElement(P, { muted: true }, ticket.amount)),
+                    createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
+                        createElement("select", { name: ticket.product_id },
+                            createElement("option", { value: 0 }, "0"),
+                            createElement("option", { value: 1 }, "1"),
+                            createElement("option", { value: 2 }, "2"))))))); })),
+        createElement(Button, { "data-testid": "submit-ticket-collection" }, "Continue")));
 };
 var NoTickets = function () { return (createElement(GridContainer, { gap: 1 },
     createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var tickets = _a.tickets;
     return (createElement("div", { "data-testid": "ticket-collection" },
-        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
+        createElement(EnumState, { e: tickets, onEmpty: function () { return createElement(NoTickets, null); }, onPopulated: function () { return createElement(ShowTickets, { tickets: tickets }); } })));
 };
 
 var ReservedItems = function (_a) {
@@ -1806,5 +1806,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, BuyTicketCard, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
 //# sourceMappingURL=index.es.js.map

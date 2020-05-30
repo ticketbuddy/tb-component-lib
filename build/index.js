@@ -1553,17 +1553,6 @@ var ActivityDateCard = function (_a) {
                 React.createElement(Button, { "data-testid": "manage-activity-date-tickets-btn" }, "Tickets")))));
 };
 
-var BuyTicketCard = function (_a) {
-    var ticket = _a.ticket, onAddToBasket = _a.onAddToBasket;
-    return (React.createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
-        React.createElement(GridContainer, { gap: 1 },
-            React.createElement(GridItem, { xs: "1/6" },
-                React.createElement(H3, null, ticket.title),
-                React.createElement(P, { muted: true }, ticket.amount)),
-            React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
-                React.createElement(Button, { onClick: function () { return onAddToBasket(ticket.product_id); }, sm: true, secondary: true }, "+ 1")))));
-};
-
 var EnumState = function (_a) {
     var e = _a.e, onEmpty = _a.onEmpty, onPopulated = _a.onPopulated;
     if (Object.keys(e).length === 0)
@@ -1761,18 +1750,29 @@ var TicketForm = function (props) {
 };
 
 var ShowTickets = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var tickets = _a.tickets;
     var ticketList = Object.values(tickets);
-    return (React.createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
-        React.createElement(BuyTicketCard, { ticket: ticket, onAddToBasket: onAddToBasket }))); })));
+    return (React.createElement("form", { method: "POST", action: "/api/basket" },
+        React.createElement(GridContainer, { gap: 1 }, ticketList.map(function (ticket) { return (React.createElement(GridItem, { xs: "1/13" },
+            React.createElement(Surface, { padding: 1, shadow: 10, "data-testid": "buy-ticket-card" },
+                React.createElement(GridContainer, { gap: 1 },
+                    React.createElement(GridItem, { xs: "1/6" },
+                        React.createElement(H3, null, ticket.title),
+                        React.createElement(P, { muted: true }, ticket.amount)),
+                    React.createElement(GridItem, { vertialAlign: "center", horizontalAlign: "end", xs: "6/13" },
+                        React.createElement("select", { name: ticket.product_id },
+                            React.createElement("option", { value: 0 }, "0"),
+                            React.createElement("option", { value: 1 }, "1"),
+                            React.createElement("option", { value: 2 }, "2"))))))); })),
+        React.createElement(Button, { "data-testid": "submit-ticket-collection" }, "Continue")));
 };
 var NoTickets = function () { return (React.createElement(GridContainer, { gap: 1 },
     React.createElement(GridItem, { xs: "1/13", horizontalAlign: "center" },
         React.createElement(H2, null, "Sorry, no tickets available!")))); };
 var TicketCollection = function (_a) {
-    var tickets = _a.tickets, onAddToBasket = _a.onAddToBasket;
+    var tickets = _a.tickets;
     return (React.createElement("div", { "data-testid": "ticket-collection" },
-        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { onAddToBasket: onAddToBasket, tickets: tickets }); } })));
+        React.createElement(EnumState, { e: tickets, onEmpty: function () { return React.createElement(NoTickets, null); }, onPopulated: function () { return React.createElement(ShowTickets, { tickets: tickets }); } })));
 };
 
 var ReservedItems = function (_a) {
@@ -1819,7 +1819,6 @@ exports.ActivityDateForm = ActivityDateForm;
 exports.ActivityDescriptionForm = ActivityDescriptionForm;
 exports.BasketSummary = BasketSummary;
 exports.Button = Button;
-exports.BuyTicketCard = BuyTicketCard;
 exports.EnumState = EnumState;
 exports.Error = Error;
 exports.GridContainer = GridContainer;

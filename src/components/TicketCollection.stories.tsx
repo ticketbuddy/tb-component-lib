@@ -20,16 +20,14 @@ const tickets = {
   }
 }
 
-const onAddToBasket = (productId: string) => {console.log(productId)}
-
 export const noTickets = () => (
   <ThemeProvider theme={lightTheme}>
-    <TicketCollection tickets={{}} onAddToBasket={onAddToBasket} />
+    <TicketCollection tickets={{}} />
   </ThemeProvider>
 )
 
 export const hasTickets = () => (
   <ThemeProvider theme={lightTheme}>
-    <TicketCollection tickets={tickets} onAddToBasket={onAddToBasket} />
+    <TicketCollection tickets={tickets} />
   </ThemeProvider>
 )

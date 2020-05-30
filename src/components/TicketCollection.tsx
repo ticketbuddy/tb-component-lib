@@ -1,24 +1,40 @@
 import * as React from "react"
-import {BuyTicketCard, OnAddToBasket, Ticket, H2, GridItem, GridContainer, EnumState} from "../";
+import {Ticket, H2, H3, P, Button, Surface, GridItem, GridContainer, EnumState} from "../";
 
 interface TicketCollectionProps {
   tickets: {
     [ticketId: string]: Ticket
-  },
-  onAddToBasket: OnAddToBasket;
+  }
 }
 
-const ShowTickets = ({tickets, onAddToBasket}: TicketCollectionProps) => {
+const ShowTickets = ({tickets}: TicketCollectionProps) => {
   const ticketList = Object.values(tickets)
 
   return (
-    <GridContainer gap={1}>
-      {ticketList.map((ticket: Ticket) => (
-        <GridItem xs="1/13">
-            <BuyTicketCard ticket={ticket} onAddToBasket={onAddToBasket} />
-        </GridItem>
-      ))}
-    </GridContainer>
+    <form method="POST" action="/api/basket">
+      <GridContainer gap={1}>
+        {ticketList.map((ticket: Ticket) => (
+          <GridItem xs="1/13">
+            <Surface padding={1} shadow={10} data-testid="buy-ticket-card">
+              <GridContainer gap={1}>
+                <GridItem xs="1/6">
+                  <H3>{ticket.title}</H3>
+                  <P muted>{ticket.amount}</P>
+                </GridItem>
+                <GridItem vertialAlign="center" horizontalAlign="end" xs="6/13">
+                  <select name={ticket.product_id} >
+                    <option value={0}>0</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                  </select>
+                </GridItem>
+              </GridContainer>
+            </Surface>
+          </GridItem>
+        ))}
+      </GridContainer>
+      <Button data-testid="submit-ticket-collection">Continue</Button>
+    </form>
   )
 }
 
@@ -30,8 +46,8 @@ const NoTickets = () => (
   </GridContainer>
 )
 
-export const TicketCollection = ({tickets, onAddToBasket}: TicketCollectionProps) => (
+export const TicketCollection = ({tickets}: TicketCollectionProps) => (
   <div data-testid="ticket-collection">
-    <EnumState e={tickets} onEmpty={() => <NoTickets />} onPopulated={() => <ShowTickets onAddToBasket={onAddToBasket} tickets={tickets} />} />
+    <EnumState e={tickets} onEmpty={() => <NoTickets />} onPopulated={() => <ShowTickets tickets={tickets} />} />
   </div>
 )
