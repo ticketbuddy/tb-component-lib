@@ -24,6 +24,7 @@ export * from "./components/ActivityDateForm"
 export * from "./components/TicketForm"
 export * from "./components/TicketCollection"
 export * from "./components/BasketSummary"
+export * from "./components/VerifyEmailForm"
 
 // types
 export * from "./components/promoter"

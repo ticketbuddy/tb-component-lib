@@ -23,6 +23,7 @@ export * from "./components/ActivityDateForm";
 export * from "./components/TicketForm";
 export * from "./components/TicketCollection";
 export * from "./components/BasketSummary";
+export * from "./components/VerifyEmailForm";
 export * from "./components/promoter";
 export * from "./components/person";
 export * from "./components/activity";

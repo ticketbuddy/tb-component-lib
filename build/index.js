@@ -1794,6 +1794,20 @@ var BasketSummary = function (_a) {
             React.createElement(ReservedItems, { items: basket.items, onUnreserve: onUnreserve }))));
 };
 
+var VerifyEmailForm = function (_a) {
+    var email = _a.email, onEmailSubmit = _a.onEmailSubmit;
+    var _b = useForm(), register = _b.register, handleSubmit = _b.handleSubmit;
+    var onSubmit = function (values) {
+        onEmailSubmit(values);
+    };
+    return (React.createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        React.createElement(GridContainer, { gap: 1 },
+            React.createElement(GridItem, { xs: "1/9" },
+                React.createElement(Input, { defaultValue: email || "", "data-testid": "email", placeholder: "Email", name: "email", ref: register({ required: true }) })),
+            React.createElement(GridItem, { xs: "9/13", vertialAlign: "center", horizontalAlign: "center" },
+                React.createElement(Button, { "data-testid": "submit-ticket", sm: true }, "Send me magic link")))));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1847,5 +1861,6 @@ exports.TextArea = TextArea;
 exports.TicketCard = TicketCard;
 exports.TicketCollection = TicketCollection;
 exports.TicketForm = TicketForm;
+exports.VerifyEmailForm = VerifyEmailForm;
 exports.lightTheme = lightTheme;
 //# sourceMappingURL=index.js.map

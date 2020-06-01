@@ -1787,6 +1787,20 @@ var BasketSummary = function (_a) {
             createElement(ReservedItems, { items: basket.items, onUnreserve: onUnreserve }))));
 };
 
+var VerifyEmailForm = function (_a) {
+    var email = _a.email, onEmailSubmit = _a.onEmailSubmit;
+    var _b = useForm(), register = _b.register, handleSubmit = _b.handleSubmit;
+    var onSubmit = function (values) {
+        onEmailSubmit(values);
+    };
+    return (createElement("form", { onSubmit: handleSubmit(onSubmit) },
+        createElement(GridContainer, { gap: 1 },
+            createElement(GridItem, { xs: "1/9" },
+                createElement(Input, { defaultValue: email || "", "data-testid": "email", placeholder: "Email", name: "email", ref: register({ required: true }) })),
+            createElement(GridItem, { xs: "9/13", vertialAlign: "center", horizontalAlign: "center" },
+                createElement(Button, { "data-testid": "submit-ticket", sm: true }, "Send me magic link")))));
+};
+
 var lightTheme = {
     // A primary color is the color displayed most frequently across your app’s screens and components.
     primaryColorDark: "#0779bc",
@@ -1806,5 +1820,5 @@ var lightTheme = {
     textFontFamily: "Quicksand, sans-serif"
 };
 
-export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, lightTheme };
+export { ActivityCard, ActivityDateCard, ActivityDateForm, ActivityDescriptionForm, BasketSummary, Button, EnumState, Error, GridContainer, GridItem, H1, H2, H3, H4, H5, Header, Image, ImageContainer, Input, LegalNotice, ManageActivityDateList, ManageActivityList, ManagePromoterList, ManageTicketList, P, PersonState, PromoterCard, PromoterDescriptionForm, SignInForm, Surface, TextArea, TicketCard, TicketCollection, TicketForm, VerifyEmailForm, lightTheme };
 //# sourceMappingURL=index.es.js.map
